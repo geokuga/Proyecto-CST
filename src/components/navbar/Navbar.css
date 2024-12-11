@@ -28,6 +28,7 @@ header {
   position: absolute;
   max-width: 130px;
   height: auto;
+  pointer-events: none;
 }
 
 .container {

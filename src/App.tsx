@@ -1,4 +1,5 @@
 import Navbar from "./components/navbar/Navbar";
+import HeaderHome from "./components/HeaderHome/HeaderHome";
 
 export default function App() {
   //jsx -> React.createElement
@@ -7,6 +8,9 @@ export default function App() {
     <div>
       <div>
         <Navbar />
+      </div>
+      <div>
+        <HeaderHome />
       </div>
     </div>
   );

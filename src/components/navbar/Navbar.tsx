@@ -18,9 +18,7 @@ const Navbar = () => {
             </div>
             <ul className={isOpen ? "nav-link active" : "nav-link"}>
               <li>
-                <a href="" className="active">
-                  Promociones
-                </a>
+                <a href="">Promociones</a>
               </li>
               <li>
                 <a href="">Servicio</a>
