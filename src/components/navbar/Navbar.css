@@ -100,9 +100,11 @@ header {
 }
 
 @media (max-width: 768px) {
-  .content h2 {
-    font-size: 4rem;
-    text-align: center;
+  .logo img {
+    position: absolute;
+    max-width: 100px;
+    height: auto;
+    pointer-events: none;
   }
 
   .icon {
