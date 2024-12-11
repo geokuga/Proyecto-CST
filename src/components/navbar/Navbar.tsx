@@ -19,7 +19,7 @@ const Navbar = () => {
             <ul className={isOpen ? "nav-link active" : "nav-link"}>
               <li>
                 <a href="" className="active">
-                  Promos
+                  Promociones
                 </a>
               </li>
               <li>
