@@ -1,7 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+.headerPrincipal {
+  padding: 2rem 0;
+}
 
-.imagenHeader img {
+.imagenHeader {
+  width: 75%;
+  height: auto;
+  pointer-events: none;
+  display: block;
+}
+
+.imagenHeaderMovil {
+  display: none;
   width: 100%;
   height: auto;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .imagenHeader {
+    display: none;
+  }
+  .imagenHeaderMovil {
+    display: block;
+  }
 }

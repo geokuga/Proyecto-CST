@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header>
+      <header className="headerNavbar">
         <div className="container">
           <nav>
             <div className="logo">
