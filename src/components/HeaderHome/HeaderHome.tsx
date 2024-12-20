@@ -2,17 +2,11 @@ import "./HeaderHome.css";
 
 export default function HeaderHome() {
   return (
-    <header className="headerPrincipal">
-      <section>
-        <center>
-          <img className="imagenHeader" src="public\img\header1.png" alt="" />
-          <img
-            className="imagenHeaderMovil"
-            src="public\img\headerCelular.png"
-            alt=""
-          />
-        </center>
+    <section className="banner">
+      <section className="HContent">
+        <h1>CAJA SOLIDARIA TALA</h1>
+        <p>La mejor forma de guardar tus ahorros</p>
       </section>
-    </header>
+    </section>
   );
 }

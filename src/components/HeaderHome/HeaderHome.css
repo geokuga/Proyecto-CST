@@ -1,26 +1,28 @@
-.headerPrincipal {
-  padding: 2rem 0;
-}
-
-.imagenHeader {
-  width: 75%;
-  height: auto;
-  pointer-events: none;
-  display: block;
-}
-
-.imagenHeaderMovil {
-  display: none;
+.banner {
   width: 100%;
-  height: auto;
-  pointer-events: none;
+  height: 88vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("public/img/header2.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-@media (max-width: 768px) {
-  .imagenHeader {
-    display: none;
-  }
-  .imagenHeaderMovil {
-    display: block;
-  }
+.HContent {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: antiquewhite;
+}
+
+.HContent h1 {
+  font-size: 50px;
+  margin-top: 10%;
+}
+
+.HContent p {
+  margin: 1.2% auto;
+  font-weight: 100;
+  /*line-height: 25px;*/
 }

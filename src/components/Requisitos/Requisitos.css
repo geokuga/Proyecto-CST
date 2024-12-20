@@ -1,0 +1,53 @@
+.RContent {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RequisitosContent {
+  width: 33.3%;
+  padding: 2rem;
+  display: flex;
+}
+
+.TituloContent {
+  display: grid;
+  place-items: center;
+  border-radius: 60px 0px 0px 40px;
+  width: 40%;
+  background-color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
+}
+
+.TituloContent h3 {
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.TextoContent {
+  display: grid;
+  place-items: center;
+  border-radius: 0px 10px 10px 0px;
+  width: 60%;
+  min-height: 250px;
+  background-color: gray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
+}
+
+.TextoContent p {
+  position: relative;
+  text-align: center;
+  color: azure;
+}
+
+@media (max-width: 768px) {
+  .RContent {
+    flex-direction: column;
+  }
+
+  .RequisitosContent {
+    width: 100%;
+  }
+}
