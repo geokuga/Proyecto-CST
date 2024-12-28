@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/Navbar";
 import HeaderHome from "./components/HeaderHome/HeaderHome";
 import Publicidad from "./components/publicidad/publicidad";
 import Requisitos from "./components/Requisitos/Requisitos";
+import BtonWhatsApp from "./components/BtonWhatsApp/BtonWhatsApp";
 
 export default function App() {
   //jsx -> React.createElement
@@ -20,6 +21,9 @@ export default function App() {
       </div>
       <div>
         <Requisitos />
+      </div>
+      <div>
+        <BtonWhatsApp />
       </div>
     </div>
   );
