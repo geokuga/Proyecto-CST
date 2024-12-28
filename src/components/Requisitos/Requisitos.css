@@ -6,17 +6,16 @@
 }
 
 .RequisitosContent {
-  width: 33.3%;
+  width: 25%;
   padding: 2rem;
-  display: flex;
 }
 
 .TituloContent {
   display: grid;
   place-items: center;
-  border-radius: 60px 0px 0px 40px;
-  width: 40%;
-  background-color: #333;
+  border-radius: 60px 60px 0px 0px;
+  width: 100%;
+  background-color: #e96123;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
 }
 
@@ -29,17 +28,17 @@
 .TextoContent {
   display: grid;
   place-items: center;
-  border-radius: 0px 10px 10px 0px;
-  width: 60%;
+  border-radius: 0px 0px 10px 10px;
+  width: 100%;
   min-height: 250px;
-  background-color: #e96123;
+  background-color: #a1a6a9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
 }
 
 .TextoContent p {
   position: relative;
   text-align: center;
-  color: azure;
+  color: white;
 }
 
 @media (max-width: 768px) {

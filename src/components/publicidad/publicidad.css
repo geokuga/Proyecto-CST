@@ -1,6 +1,6 @@
 .PContent {
   padding: 2rem 0;
-  background-color: #1572b8;
+  background-color: #a1a6a9;
 }
 
 .Pcontentenedor {
@@ -17,6 +17,13 @@
   height: auto;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 1s ease, box-shadow 0.3s ease;
+}
+
+.imagen:hover {
+  transform: scale(1.01); /* Esto agranda la imagen en un 10% */
+  transition: transform 0.3s ease; /* Esto añade una transición suave */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Esto aumenta el sombreado para resaltar la imagen */
 }
 
 @media (max-width: 768px) {
