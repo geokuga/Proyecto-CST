@@ -1,0 +1,35 @@
+.DContenedor {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.DContent {
+  width: 30%;
+  height: 80%;
+  background-color: white;
+}
+
+.DTitulo {
+  text-align: center;
+  padding: 5%;
+}
+
+.DTexto {
+  text-align: justify;
+  padding: 5%;
+}
+
+.DContentImagen {
+  width: 55%;
+  height: 80%;
+  background-color: gray;
+}
+
+.DContentImagen img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

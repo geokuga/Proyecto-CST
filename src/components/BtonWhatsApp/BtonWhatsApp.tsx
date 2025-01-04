@@ -3,17 +3,12 @@ import "./BtonWhatsApp.css";
 import "font-awesome/css/font-awesome.min.css"; // Asegúrate de que FontAwesome está instalado y correctamente importado.
 
 const BtonWhatsApp: React.FC = () => {
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=1234567891&text=${encodeURIComponent(
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=523841090455&text=${encodeURIComponent(
     "Hola, me gustaria Obtener más información"
   )}`;
 
   return (
-    <a
-      href={whatsappUrl}
-      className="float"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href={whatsappUrl} className="float">
       <i className="fa fa-whatsapp my-float"></i>
     </a>
   );

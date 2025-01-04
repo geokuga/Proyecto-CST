@@ -15,7 +15,7 @@
   place-items: center;
   border-radius: 60px 60px 0px 0px;
   width: 100%;
-  background-color: #e96123;
+  background-color: #f15a29;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
 }
 
@@ -31,14 +31,14 @@
   border-radius: 0px 0px 10px 10px;
   width: 100%;
   min-height: 250px;
-  background-color: #a1a6a9;
+  background-color: #b3b3b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
 }
 
 .TextoContent p {
   position: relative;
   text-align: center;
-  color: white;
+  color: #4a4a4a;
 }
 
 @media (max-width: 768px) {

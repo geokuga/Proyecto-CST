@@ -1,6 +1,6 @@
 .PContent {
+  height: 100%;
   padding: 2rem 0;
-  background-color: #a1a6a9;
 }
 
 .Pcontentenedor {
@@ -11,9 +11,12 @@
   justify-content: center;
 }
 
-.imagen {
+.imagenV {
   width: 20%;
-  margin-left: 4%;
+}
+
+.imagen {
+  margin: 3%;
   height: auto;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -21,9 +24,19 @@
 }
 
 .imagen:hover {
-  transform: scale(1.01); /* Esto agranda la imagen en un 10% */
-  transition: transform 0.3s ease; /* Esto añade una transición suave */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Esto aumenta el sombreado para resaltar la imagen */
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.imagenHCont {
+  width: 36%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.imagenH {
 }
 
 @media (max-width: 768px) {
