@@ -4,11 +4,19 @@ export default function publicidad() {
   return (
     <section className="PContent">
       <section className="Pcontentenedor">
-        <img
-          className="imagen imagenV"
-          src="public\img\publicidad1.jpeg"
-          alt=""
-        />
+        <section className="imagenHCont">
+          <img
+            className="imagenH imagen"
+            src="public\img\publicidad4.jpeg"
+            alt=""
+          />
+          <img
+            className="imagenH imagen"
+            src="public\img\publicidad5.jpeg"
+            alt=""
+          />
+        </section>
+
         <section className="imagenHCont">
           <img
             className="imagenH imagen"
@@ -21,11 +29,6 @@ export default function publicidad() {
             alt=""
           />
         </section>
-        <img
-          className="imagen imagenV"
-          src="public\img\publicidad1.jpeg"
-          alt=""
-        />
       </section>
     </section>
   );

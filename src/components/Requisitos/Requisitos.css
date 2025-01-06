@@ -3,6 +3,7 @@
   padding: 2rem 0;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(95, 95, 95);
 }
 
 .RequisitosContent {
@@ -13,16 +14,21 @@
 .TituloContent {
   display: grid;
   place-items: center;
-  border-radius: 60px 60px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   width: 100%;
-  background-color: #f15a29;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
+  background: rgb(29, 113, 184);
+  background: linear-gradient(
+    90deg,
+    rgba(29, 113, 184, 1) 0%,
+    rgba(50, 163, 221, 1) 100%
+  );
 }
 
 .TituloContent h3 {
   position: relative;
   color: white;
   text-align: center;
+  padding: 1%;
 }
 
 .TextoContent {
@@ -31,14 +37,17 @@
   border-radius: 0px 0px 10px 10px;
   width: 100%;
   min-height: 250px;
-  background-color: #b3b3b3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
+  background-color: #f9b234;
 }
 
 .TextoContent p {
   position: relative;
   text-align: center;
-  color: #4a4a4a;
+  color: black;
+}
+
+.TituloContentSM {
+  border-radius: 0 0 0 0;
 }
 
 @media (max-width: 768px) {

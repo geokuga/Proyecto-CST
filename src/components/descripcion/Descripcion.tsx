@@ -13,9 +13,7 @@ export default function Descripcion() {
           iusto laborum tempora hic.
         </div>
       </section>
-      <section className="DContentImagen">
-        <img src="public\img\header1.png" />
-      </section>
+      <section className="DContentImagen"></section>
     </section>
   );
 }

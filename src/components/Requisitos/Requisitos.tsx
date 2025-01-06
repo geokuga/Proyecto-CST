@@ -5,19 +5,17 @@ export default function Requisitos() {
     <section className="RContent">
       <section className="RequisitosContent">
         <div className="TituloContent">
-          <h3>Ser socio</h3>
+          <h3>Requisitos para ser socio</h3>
         </div>
-        <div className="TextoContent">
+        <div className="TextoContent TituloContentSM">
           <p>Comprobante de domicilio</p>
           <p>Identificacion Oficial</p>
           <p>Parte social ($960)</p>
         </div>
-      </section>
-      <section className="RequisitosContent">
-        <div className="TituloContent">
-          <h3>Ser socio menor</h3>
+        <div className="TituloContentSM TituloContent">
+          <h3>Socio menor</h3>
         </div>
-        <div className="TextoContent">
+        <div className="TextoContentSM TextoContent">
           <p>Acta de nacimiento</p>
           <p>CURP</p>
           <p>Comprobante de domicilio</p>
