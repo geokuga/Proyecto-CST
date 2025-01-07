@@ -22,27 +22,30 @@ export default function Requisitos() {
           <p>Identificación oficial del tutor</p>
         </div>
       </section>
+
       <section className="RequisitosContent">
         <div className="TituloContent">
           <h3>Creditos</h3>
         </div>
         <div className="TextoContent">
           <p>
-            <b>Socio</b>
+            <b className="subtituloR">Socio</b>
           </p>
           <p>Comprobante de domicilio</p>
           <p>Identificacion oficial</p>
           <p>Comprobante de ingresos</p>
           <p>Tener ahorro de 10% o 20%</p>
           <p>
-            <b>Aval</b>
+            <b className="subtituloR">Aval</b>
           </p>
           <p>Comprobante de domicilio</p>
           <p>Identificacion oficial</p>
           <p>Comprobante de ingresos</p>
           <p>No ser mayor de 60 años de edad</p>
+          <button className="RBton">Simular credito</button>
         </div>
       </section>
+
       <section className="RequisitosContent">
         <div className="TituloContent">
           <h3>Inversiones</h3>

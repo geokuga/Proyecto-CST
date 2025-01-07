@@ -39,3 +39,17 @@
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 768px) {
+  .DContenedor {
+    flex-direction: column;
+  }
+
+  .DContent {
+    width: 90%;
+  }
+
+  .DContentImagen {
+    width: 90%;
+  }
+}
