@@ -1,5 +1,16 @@
 import "./Requisitos.css";
 
+interface ItemProps {
+  text: string;
+}
+const Item: React.FC<ItemProps> = ({ text }) => {
+  return (
+    <p>
+      <i className="fa fa-check-circle-o" aria-hidden="true"></i> &nbsp;{text}
+    </p>
+  );
+};
+
 export default function Requisitos() {
   return (
     <section className="RContent">
@@ -8,49 +19,57 @@ export default function Requisitos() {
           <h3>Requisitos para ser socio</h3>
         </div>
         <div className="TextoContent TituloContentSM">
-          <p>Comprobante de domicilio</p>
-          <p>Identificacion Oficial</p>
-          <p>Parte social ($960)</p>
+          <Item text="Comprobante de domicilio" />
+          <Item text="Identificación Oficial" />
+          <Item text="Cubrir parte social ($960)" />
         </div>
         <div className="TituloContentSM TituloContent">
           <h3>Socio menor</h3>
         </div>
         <div className="TextoContentSM TextoContent">
-          <p>Acta de nacimiento</p>
-          <p>CURP</p>
-          <p>Comprobante de domicilio</p>
-          <p>Identificación oficial del tutor</p>
+          <Item text="Acta de nacimiento" />
+          <Item text="CURP" />
+          <Item text="Comprobante de domicilio" />
+          <Item text="Identificación oficial del tutor" />
+          <Item text="Cubrir parte social ($960)" />
         </div>
       </section>
 
       <section className="RequisitosContent">
         <div className="TituloContent">
-          <h3>Creditos</h3>
+          <h3>Créditos</h3>
         </div>
         <div className="TextoContent">
-          <p>
-            <b className="subtituloR">Socio</b>
-          </p>
-          <p>Comprobante de domicilio</p>
-          <p>Identificacion oficial</p>
-          <p>Comprobante de ingresos</p>
-          <p>Tener ahorro de 10% o 20%</p>
-          <p>
-            <b className="subtituloR">Aval</b>
-          </p>
-          <p>Comprobante de domicilio</p>
-          <p>Identificacion oficial</p>
-          <p>Comprobante de ingresos</p>
-          <p>No ser mayor de 60 años de edad</p>
-          <button className="RBton">Simular credito</button>
+          <Item text="Créditos comerciales" />
+          <Item text="Créditos ganaderos" />
+          <Item text="Créditos agrícolas" />
+          <Item text="Créditos al consumo" />
+          <Item text="Créditos a la vivienda" />
+        </div>
+        <div className="TituloContentSM TituloContent">
+          <h3>Requisitos para crédito</h3>
+        </div>
+        <div className="TextoContentSM TextoContent">
+          <Item text="Acta de nacimiento" /> <Item text="CURP" />
+          <Item text="Comprobante de domicilio" />
+          <Item text="Identificación oficial del tutor" />
+          <Item text="Cubrir parte social ($960)" />
+          <center>
+            <button className="RBton">Simular crédito</button>
+          </center>
         </div>
       </section>
 
       <section className="RequisitosContent">
         <div className="TituloContent">
-          <h3>Inversiones</h3>
+          <h3>Productos de ahorro</h3>
         </div>
-        <div className="TextoContent"></div>
+        <div className="TextoContent">
+          <Item text="Cuenta corriente" />
+          <Item text="Ahorro juvenil" />
+          <Item text="Ahorro promoción" />
+          <Item text="Inversiones a plazo fijo" />
+        </div>
       </section>
     </section>
   );
