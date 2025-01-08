@@ -1,0 +1,28 @@
+.FContent {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  background: linear-gradient(to right, #e67e22, #f39c12);
+  overflow: hidden;
+}
+
+.FContent::before,
+.FContent::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  border-radius: 50% / 100px;
+  left: 0;
+}
+
+.FContent::before {
+  top: -50px; /* Curva superior */
+}
+
+.FContent::after {
+  bottom: -50px; /* Curva inferior */
+}

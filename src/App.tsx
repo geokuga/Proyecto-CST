@@ -5,6 +5,8 @@ import Publicidad from "./components/publicidad/publicidad";
 import Requisitos from "./components/Requisitos/Requisitos";
 import BtonWhatsApp from "./components/BtonWhatsApp/BtonWhatsApp";
 import Descripcion from "./components/descripcion/Descripcion";
+import Mision from "./components/MisionVision/MisionVision";
+import Final from "./components/footer/footer";
 
 export default function App() {
   //jsx -> React.createElement
@@ -28,6 +30,12 @@ export default function App() {
       </div>
       <div>
         <Descripcion />
+      </div>
+      <div>
+        <Mision />
+      </div>
+      <div>
+        <Final />
       </div>
     </div>
   );
