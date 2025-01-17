@@ -2,14 +2,14 @@
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .MContenedor {
   width: 30%;
   min-height: 200px;
   background-color: gray;
-  margin: 5%;
+  margin: 3%;
   border-radius: 10%;
 }
 

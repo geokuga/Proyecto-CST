@@ -8,8 +8,8 @@
 
 .DContent {
   width: 30%;
-  height: 80%;
-  background-color: rgb(71, 70, 70);
+  height: 100%;
+  background-color: #bb9e8d;
   color: blanchedalmond;
   border-radius: 10px 0 0 10px;
 }
@@ -25,13 +25,14 @@
 }
 
 .DContentImagen {
-  width: 55%;
-  height: 80%;
+  width: 45%;
+  height: 100%;
   background-color: gray;
   background: url("public/img/header2.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
+  border: 10px solid #bb9e8d;
 }
 
 .DContentImagen img {

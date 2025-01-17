@@ -7,12 +7,12 @@ export default function publicidad() {
         <section className="imagenHCont">
           <img
             className="imagenH imagen"
-            src="public\img\publicidad4.jpeg"
+            src="public\img\publicidad 1.jpg"
             alt=""
           />
           <img
             className="imagenH imagen"
-            src="public\img\publicidad5.jpeg"
+            src="public\img\publicidad2.jpg"
             alt=""
           />
         </section>
@@ -20,12 +20,25 @@ export default function publicidad() {
         <section className="imagenHCont">
           <img
             className="imagenH imagen"
-            src="public\img\publicidad2.jpeg"
+            src="public\img\publicidad3.jpg"
             alt=""
           />
           <img
             className="imagenH imagen"
-            src="public\img\publicidad3.jpeg"
+            src="public\img\publicidad4.jpg"
+            alt=""
+          />
+        </section>
+
+        <section className="imagenHCont">
+          <img
+            className="imagenH imagen"
+            src="public\img\publicidad5.jpg"
+            alt=""
+          />
+          <img
+            className="imagenH imagen"
+            src="public\img\publicidad6.jpg"
             alt=""
           />
         </section>
