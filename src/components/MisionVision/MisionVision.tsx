@@ -5,9 +5,9 @@ export default function MisionVision() {
     <section className="MContent">
       <section className="MContenedor">
         <center>
+          <h3 className="MTitulo">Misión</h3>
           <i className="fa fa-user iconoM" aria-hidden="true"></i>
         </center>
-        <h3 className="MTitulo">Misión</h3>
         <p className="MTexto">
           Somos una sociedad cooperativa de ahorro y préstamo autorizada, que
           opera en la región Valles; brindando educación financiera, promoviendo
@@ -15,11 +15,12 @@ export default function MisionVision() {
           socios, para elevar su nivel de vida.
         </p>
       </section>
+
       <section className="MContenedor">
         <center>
+          <h3 className="MTitulo">Visión</h3>
           <i className="fa fa-eye iconoM" aria-hidden="true"></i>
         </center>
-        <h3 className="MTitulo">Visión</h3>
         <p className="MTexto">
           Ser una sociedad cooperativa de ahorro y préstamo de nivel dos, lograr
           y mantener una alta calidad en nuestros productos y servicios con

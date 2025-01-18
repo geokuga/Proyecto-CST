@@ -8,9 +8,10 @@ export default function Descripcion() {
           <h3>¿Quienes somos?</h3>
         </div>
         <div className="DTexto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-          facilis, praesentium quisquam ad vero rem fugit reiciendis iure harum
-          iusto laborum tempora hic.
+          En nuestra institución financiera, estamos comprometidos con tu éxito
+          y bienestar. Ofrecemos una amplia gama de servicios personalizados
+          para ayudarte a alcanzar tus metas financieras, desde ahorros e
+          inversiones hasta préstamos y asesoramiento financiero.
         </div>
       </section>
       <section className="DContentImagen"></section>

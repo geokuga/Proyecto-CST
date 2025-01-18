@@ -9,7 +9,7 @@
 .DContent {
   width: 30%;
   height: 100%;
-  background-color: #bb9e8d;
+  background-color: #e67e22;
   color: blanchedalmond;
   border-radius: 10px 0 0 10px;
 }
@@ -20,8 +20,9 @@
 }
 
 .DTexto {
-  text-align: justify;
-  padding: 5%;
+  text-align: center;
+  padding: 15%;
+  padding-top: 1%;
 }
 
 .DContentImagen {
@@ -32,7 +33,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
-  border: 10px solid #bb9e8d;
+  border: 10px solid #e67e22;
 }
 
 .DContentImagen img {
