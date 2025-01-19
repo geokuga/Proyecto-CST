@@ -26,7 +26,7 @@ export default function footer() {
               </li>
               <li>
                 <a href="">
-                  <i className="fa fa-youtube-play" aria-hidden="true"></i>
+                  <i className="fa fa-envelope" aria-hidden="true"></i>
                 </a>
               </li>
             </ul>
@@ -39,39 +39,42 @@ export default function footer() {
               <a href="">Home</a>
             </li>
             <li>
-              <a href="">About</a>
+              <a href="">Servicio</a>
             </li>
             <li>
-              <a href="">Service</a>
+              <a href="">Credito</a>
             </li>
             <li>
-              <a href="">FAQ</a>
+              <a href="">Conocenos</a>
             </li>
             <li>
-              <a href="">Contact</a>
+              <a href="">Contacto</a>
             </li>
           </ul>
         </div>
         <div className="footer_width contact">
-          <h2>Contact</h2>
+          <h2>Contacto</h2>
           <ul>
             <li>
               <span>
                 <i className="fa fa-map-marker" aria-hidden="true"></i>
               </span>
-              <p> San Rodrigo Aguilar #11, San miguel, Tala, Jalisco</p>
+              <p>
+                Vicente Guerrero #84, tala centro, codigo postal 45300, Tala,
+                Jalisco
+              </p>
             </li>
             <li>
               <span>
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </span>
-              <a href="">cajasolidariatala@hotmail.com</a>
+              <a>unecajasolidariatala@hotmail.com</a>
             </li>
             <li>
               <span>
                 <i className="fa fa-phone" aria-hidden="true"></i>
               </span>
-              <a href="">00 00 00 00 00</a>
+              <a>01 (384) 738-3892</a>
             </li>
           </ul>
         </div>

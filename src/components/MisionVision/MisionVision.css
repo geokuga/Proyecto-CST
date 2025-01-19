@@ -6,10 +6,12 @@
 }
 
 .MContenedor {
-  width: 30%;
-  min-height: 200px;
+  width: 25%;
+  min-height: 100px;
   background-color: gray;
   margin: 3%;
+  margin-left: 6%;
+  margin-right: 6%;
   border-radius: 7%;
 }
 
@@ -31,4 +33,15 @@
   text-align: justify;
   margin: 10%;
   font-size: medium;
+}
+
+@media (max-width: 768px) {
+  .MContent {
+    flex-direction: column;
+  }
+
+  .MContenedor {
+    width: 90%;
+    margin-left: 5%;
+  }
 }
