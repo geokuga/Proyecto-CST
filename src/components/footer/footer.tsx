@@ -80,7 +80,7 @@ export default function footer() {
         </div>
       </section>
       <div className="copy-right">
-        <p>@CAJA SOLIDARIA TALA CA DE CV</p>
+        <p>@Caja Solidaria Tala S.C. de A.P. de R.L. de C.V.</p>
       </div>
     </footer>
   );
