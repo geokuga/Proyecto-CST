@@ -9,7 +9,7 @@
 .DContent {
   width: 30%;
   height: 100%;
-  background-color: #e67e22;
+  background-color: #989593;
   color: blanchedalmond;
   border-radius: 10px 0 0 10px;
 }
@@ -20,8 +20,9 @@
 }
 
 .DTexto {
-  text-align: center;
-  padding: 15%;
+  text-align: justify;
+  font-size: 101%;
+  padding: 11%;
   padding-top: 1%;
 }
 
@@ -33,7 +34,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
-  border: 10px solid #e67e22;
+  border: 10px solid #989593;
 }
 
 .DContentImagen img {
@@ -51,6 +52,10 @@
   .DContent {
     width: 90%;
     border-radius: 0 0 10px 10px;
+  }
+
+  .DTexto {
+    text-align: justify;
   }
 
   .DContentImagen {

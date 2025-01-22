@@ -6,17 +6,17 @@
 }
 
 .MContenedor {
-  width: 25%;
+  width: 33%;
   min-height: 100px;
-  background-color: gray;
   margin: 3%;
   margin-left: 6%;
   margin-right: 6%;
+  margin-bottom: 6%;
   border-radius: 7%;
 }
 
 .iconoM {
-  color: white;
+  color: orange;
   font-size: 500%;
 }
 
@@ -24,24 +24,26 @@
   font-size: 200%;
   font-family: serif;
   text-align: center;
-  color: white;
+  color: gray;
   margin: 5%;
 }
 
 .MTexto {
-  color: white;
+  color: gray;
   text-align: justify;
-  margin: 10%;
+  margin-top: 8%;
   font-size: medium;
 }
 
 @media (max-width: 768px) {
   .MContent {
     flex-direction: column;
+    margin-bottom: 8%;
+    margin-top: 8%;
   }
 
   .MContenedor {
-    width: 90%;
-    margin-left: 5%;
+    width: 85%;
+    margin-left: 7%;
   }
 }

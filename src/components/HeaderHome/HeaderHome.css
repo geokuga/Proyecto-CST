@@ -1,2 +1,44 @@
-.banner h1 {
+.banner {
+  background: url("public/img/fondo_header.png") no-repeat center center;
+  background-size: cover;
+  height: 78vh;
+  width: 100%;
+  display: flex;
+}
+
+.banner img {
+  margin-top: 1%;
+  width: 25%;
+  height: auto;
+  margin-left: 10%;
+}
+
+.HContent {
+  color: white;
+  margin: 12%;
+}
+
+.HContent h3 {
+  font-size: 240%;
+}
+
+.HContent p {
+  position: absolute;
+  font-size: 105%;
+  margin-left: 13%;
+}
+
+.HeaderBton {
+  width: 30%;
+  padding: 1.3% 0;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  background: rgb(29, 113, 184);
+  color: aliceblue;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 5%;
+  margin-top: 15%;
+  border: none;
 }
