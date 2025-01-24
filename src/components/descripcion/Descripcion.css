@@ -9,21 +9,23 @@
 .DContent {
   width: 30%;
   height: 100%;
-  background-color: #989593;
+  background: linear-gradient(to right, #e67e22, #f39c12);
   color: blanchedalmond;
   border-radius: 10px 0 0 10px;
 }
 
 .DTitulo {
   text-align: center;
-  padding: 5%;
+  padding: 7%;
+  padding-top: 12%;
 }
 
 .DTexto {
+  font-family: "Georgia", serif;
   text-align: justify;
-  font-size: 101%;
-  padding: 11%;
-  padding-top: 1%;
+  font-size: 118%;
+  padding: 6%;
+  padding-top: 4%;
 }
 
 .DContentImagen {
@@ -34,7 +36,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
-  border: 10px solid #989593;
+  border: 10px solid #f39c12;
 }
 
 .DContentImagen img {

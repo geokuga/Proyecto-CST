@@ -24,7 +24,7 @@ const Navbar = () => {
                 <a href="">Servicio</a>
               </li>
               <li>
-                <a href="">Credito</a>
+                <a href="">Crédito</a>
               </li>
               <li>
                 <a href="">Conocenos</a>

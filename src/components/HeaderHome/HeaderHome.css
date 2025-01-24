@@ -1,44 +1,82 @@
 .banner {
-  background: url("public/img/fondo_header.png") no-repeat center center;
+  background: url("public/img/fondo_header1.png") no-repeat center center;
   background-size: cover;
-  height: 78vh;
+  height: 85vh;
   width: 100%;
   display: flex;
 }
 
 .banner img {
   margin-top: 1%;
-  width: 25%;
+  width: 28%;
   height: auto;
-  margin-left: 10%;
 }
 
 .HContent {
   color: white;
-  margin: 12%;
+  margin: 10%;
 }
 
 .HContent h3 {
-  font-size: 240%;
+  font-family: "Georgia", serif;
+  font-size: 350%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .HContent p {
+  font-family: "Georgia", serif;
   position: absolute;
-  font-size: 105%;
-  margin-left: 13%;
+  font-size: 160%;
+  margin-left: 20%;
+  transform: skew(-15deg);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .HeaderBton {
   width: 30%;
-  padding: 1.3% 0;
+  font-size: 110%;
+  padding: 3% 0;
+  font-family: "Georgia", serif;
   text-align: center;
-  border-radius: 5px;
   font-weight: bold;
-  background: rgb(29, 113, 184);
+  background: transparent;
   color: aliceblue;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
   cursor: pointer;
   transition: 0.3s;
   margin: 5%;
-  margin-top: 15%;
-  border: none;
+  margin-top: 20%;
+}
+
+.HeaderBton:hover {
+  transition: 0.5s;
+  background-color: rgb(251, 187, 68);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .banner img {
+    width: 40%;
+  }
+
+  .HContent {
+    width: 100%;
+    margin: 0;
+    margin-top: 10%;
+    justify-content: center;
+  }
+
+  .HContent h3 {
+    text-align: center;
+    font-size: 200%;
+  }
+
+  .HeaderBton {
+    font-size: 118%;
+  }
 }

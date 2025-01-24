@@ -5,7 +5,7 @@ export default function Descripcion() {
     <section className="DContenedor">
       <section className="DContent">
         <div className="DTitulo">
-          <h3>¿Quienes somos?</h3>
+          <h3>¿Quiénes somos?</h3>
         </div>
         <div className="DTexto">
           En nuestra institución financiera, estamos comprometidos con tu éxito
