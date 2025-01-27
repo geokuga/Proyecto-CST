@@ -44,27 +44,55 @@
   border: 2px solid #ffffff;
   border-radius: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.5s;
   margin: 5%;
   margin-top: 20%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .HeaderBton:hover {
   transition: 0.5s;
   background-color: rgb(251, 187, 68);
+  transform: scale(1.01);
+}
+
+.HeaderBtonC {
+  width: 30%;
+  font-size: 110%;
+  padding: 3% 0;
+  font-family: "Georgia", serif;
+  text-align: center;
+  font-weight: bold;
+  background: rgb(251, 236, 207);
+  color: orange;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 5%;
+  margin-top: 20%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.HeaderBtonC:hover {
+  transition: 0.5s;
+  transform: scale(1.01);
 }
 
 @media (max-width: 768px) {
   .banner {
     flex-direction: column;
     height: 100vh;
+    align-items: center;
   }
 
   .banner img {
     width: 40%;
+    margin-top: 10%;
   }
 
   .HContent {
+    align-items: center;
     width: 100%;
     margin: 0;
     margin-top: 10%;
@@ -72,11 +100,18 @@
   }
 
   .HContent h3 {
+    margin-top: 10%;
     text-align: center;
     font-size: 200%;
   }
 
-  .HeaderBton {
+  .HContent p {
+    left: 17%;
+    font-size: 120%;
+  }
+
+  .HeaderBton,
+  .HeaderBtonC {
     font-size: 118%;
   }
 }

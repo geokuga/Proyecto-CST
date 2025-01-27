@@ -14,7 +14,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  border-radius: 2%;
+  border-radius: 15px;
   -ms-overflow-style: none; /* Ocultar la barra de scroll en Internet Explorer y Edge */
   scrollbar-width: none; /* Ocultar la barra de scroll en Firefox */
 }
@@ -26,6 +26,7 @@
 .slider img {
   scroll-snap-align: start;
   object-fit: cover;
+  border: 1px solid rgb(230, 229, 229);
   flex: 0 0 50%; /* Ajustar el ancho de las imágenes al 50% del contenedor */
 }
 

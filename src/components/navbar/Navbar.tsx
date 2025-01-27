@@ -27,7 +27,7 @@ const Navbar = () => {
                 <a href="">Crédito</a>
               </li>
               <li>
-                <a href="">Conocenos</a>
+                <a href="">Conócenos</a>
               </li>
               <li>
                 <a href="">Contacto</a>

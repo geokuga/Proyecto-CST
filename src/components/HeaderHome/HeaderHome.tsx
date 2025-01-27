@@ -6,8 +6,9 @@ export default function HeaderHome() {
       <section className="HContent">
         <h3>Caja Solidaria Tala</h3>
         <p>La caja de nuestra gente</p>
-        <center>
+        <center className="BtonContent">
           <button className="HeaderBton"> Ser socio</button>
+          <button className="HeaderBtonC"> Obtener crédito</button>
         </center>
       </section>
       <img src="public\logos\caña.png"></img>

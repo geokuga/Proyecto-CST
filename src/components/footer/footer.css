@@ -32,6 +32,11 @@
   margin-bottom: 20px;
 }
 
+.about p {
+  width: 93%;
+  text-align: justify;
+}
+
 .about,
 .contact {
   width: 40%;
@@ -100,6 +105,10 @@
   .link {
     width: 30%;
   }
+
+  .about p {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -112,5 +121,9 @@
 
   .footer_info {
     flex-direction: column;
+  }
+
+  .about p {
+    width: 100%;
   }
 }

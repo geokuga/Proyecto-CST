@@ -7,10 +7,9 @@ export default function footer() {
         <div className="footer_width about">
           <h2>About</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum sunt
-            iure cupiditate nobis, soluta facilis corrupti similique labore
-            deserunt fugiat veniam aliquid vel porro neque at, beatae nostrum,
-            voluptatibus nemo!
+            ¿Tienes alguna pregunta? ¡No dudes en llamarnos! Estamos aquí para
+            ayudarte a resolver cualquier duda y hacer que tu experiencia sea lo
+            más fácil y agradable posible.
           </p>
           <div className="social-media">
             <ul>
