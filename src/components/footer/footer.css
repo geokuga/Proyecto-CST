@@ -74,6 +74,7 @@
   display: block;
   margin-bottom: 15px;
   font-size: 18x;
+  cursor: pointer;
 }
 
 .link ul li a:hover {

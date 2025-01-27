@@ -1,3 +1,4 @@
+// Navbar.js
 import { useState } from "react";
 import "./Navbar.css";
 import { FaBars } from "react-icons/fa6";
@@ -8,29 +9,36 @@ const Navbar = () => {
     setOpen(!isOpen);
   };
 
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <header className="headerNavbar">
         <div className="container">
           <nav>
             <div className="logo">
-              <img src="public\logos\LogoCajaSolidaria.png" alt="" />
+              <img src="public/logos/LogoCajaSolidaria.png" alt="Logo" />
             </div>
             <ul className={isOpen ? "nav-link active" : "nav-link"}>
               <li>
-                <a href="">Promociones</a>
+                <a onClick={() => handleScroll("publicidad")}>Promociones</a>
               </li>
               <li>
-                <a href="">Servicio</a>
+                <a onClick={() => handleScroll("requisitos")}>Servicio</a>
               </li>
               <li>
                 <a href="">Crédito</a>
               </li>
               <li>
-                <a href="">Conócenos</a>
+                <a onClick={() => handleScroll("descripcion")}>Conócenos</a>
               </li>
               <li>
-                <a href="">Contacto</a>
+                <a onClick={() => handleScroll("final")}>Contacto</a>
               </li>
             </ul>
             <div className="icon" onClick={toggleMenu}>

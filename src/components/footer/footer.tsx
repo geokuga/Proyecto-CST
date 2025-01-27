@@ -1,6 +1,13 @@
 import "./footer.css";
 
-export default function footer() {
+const handleScroll = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+export default function Footer() {
   return (
     <footer className="FContent">
       <section className="footer_info">
@@ -14,17 +21,17 @@ export default function footer() {
           <div className="social-media">
             <ul>
               <li>
-                <a href="">
+                <a href="#">
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="#">
                   <i className="fa fa-whatsapp" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="#">
                   <i className="fa fa-envelope" aria-hidden="true"></i>
                 </a>
               </li>
@@ -35,19 +42,16 @@ export default function footer() {
           <h2>Link</h2>
           <ul>
             <li>
-              <a href="">Home</a>
+              <a onClick={() => handleScroll("headerHome")}>Home</a>
             </li>
             <li>
-              <a href="">Servicio</a>
+              <a onClick={() => handleScroll("requisitos")}>Servicio</a>
             </li>
             <li>
               <a href="">Crédito</a>
             </li>
             <li>
-              <a href="">Conocenos</a>
-            </li>
-            <li>
-              <a href="">Contacto</a>
+              <a onClick={() => handleScroll("descripcion")}>Conócenos</a>
             </li>
           </ul>
         </div>
@@ -59,7 +63,7 @@ export default function footer() {
                 <i className="fa fa-map-marker" aria-hidden="true"></i>
               </span>
               <p>
-                Vicente Guerrero #84, tala centro, codigo postal 45300, Tala,
+                Vicente Guerrero #84, tala centro, código postal 45300, Tala,
                 Jalisco
               </p>
             </li>
@@ -67,13 +71,15 @@ export default function footer() {
               <span>
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </span>
-              <a>unecajasolidariatala@hotmail.com</a>
+              <a href="mailto:unecajasolidariatala@hotmail.com">
+                unecajasolidariatala@hotmail.com
+              </a>
             </li>
             <li>
               <span>
                 <i className="fa fa-phone" aria-hidden="true"></i>
               </span>
-              <a>01 (384) 738-3892</a>
+              <a href="tel:+523847383892">01 (384) 738-3892</a>
             </li>
           </ul>
         </div>

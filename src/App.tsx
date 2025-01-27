@@ -9,32 +9,28 @@ import Mision from "./components/MisionVision/MisionVision";
 import Final from "./components/footer/footer";
 
 export default function App() {
-  //jsx -> React.createElement
-
   return (
     <div className="fondo">
-      <div>
-        <Navbar />
-      </div>
-      <div>
+      <Navbar />
+      <div id="headerHome">
         <HeaderHome />
       </div>
-      <div>
+      <div id="publicidad">
         <Publicidad />
       </div>
-      <div>
+      <div id="requisitos">
         <Requisitos />
       </div>
-      <div>
+      <div id="btonWhatsApp">
         <BtonWhatsApp />
       </div>
-      <div>
+      <div id="descripcion">
         <Descripcion />
       </div>
-      <div>
+      <div id="mision">
         <Mision />
       </div>
-      <div>
+      <div id="final">
         <Final />
       </div>
     </div>
