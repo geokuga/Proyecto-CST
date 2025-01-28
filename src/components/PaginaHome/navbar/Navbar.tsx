@@ -1,5 +1,5 @@
-// Navbar.js
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars } from "react-icons/fa6";
 
@@ -32,7 +32,7 @@ const Navbar = () => {
                 <a onClick={() => handleScroll("requisitos")}>Servicio</a>
               </li>
               <li>
-                <a href="">Crédito</a>
+                <Link to="/credito">Crédito</Link>
               </li>
               <li>
                 <a onClick={() => handleScroll("descripcion")}>Conócenos</a>

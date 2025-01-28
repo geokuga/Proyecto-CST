@@ -1,4 +1,5 @@
 import "./HeaderHome.css";
+import { Link } from "react-router-dom";
 
 const handleScroll = (id: string) => {
   const element = document.getElementById(id);
@@ -18,10 +19,11 @@ export default function HeaderHome() {
             className="HeaderBton"
             onClick={() => handleScroll("requisitos")}
           >
-            {" "}
             Ser socio
           </button>
-          <button className="HeaderBtonC"> Obtener crédito</button>
+          <Link to="/credito">
+            <button className="HeaderBtonC"> Obtener crédito</button>
+          </Link>
         </center>
       </section>
       <img src="public/logos/caña.png" alt="Logo Caña" />

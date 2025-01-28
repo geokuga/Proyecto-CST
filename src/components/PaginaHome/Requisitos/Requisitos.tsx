@@ -1,4 +1,5 @@
 import "./Requisitos.css";
+import { Link } from "react-router-dom";
 
 interface ItemProps {
   text: string;
@@ -55,7 +56,9 @@ export default function Requisitos() {
           <Item text="Identificación oficial del tutor" />
           <Item text="Cubrir parte social ($960)" />
           <center>
-            <button className="RBton">Simular crédito</button>
+            <Link to="/credito">
+              <button className="RBton">Simular crédito</button>
+            </Link>
           </center>
         </div>
       </section>

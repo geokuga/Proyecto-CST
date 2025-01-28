@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="social-media">
             <ul>
               <li>
-                <a href="#">
+                <a href="https://www.facebook.com/cajasolidariatala.scdeapde">
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
               </li>
