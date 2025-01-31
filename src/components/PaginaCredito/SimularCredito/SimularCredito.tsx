@@ -16,6 +16,8 @@ export default function SimularCredito() {
   return (
     <section className="Scontenedor">
       <div className="SCont">
+        <label>Selecciona el tipo de crédito que necesitas:</label>
+
         <section className="SContButton">
           <div className="SContSeleccion">
             <button
@@ -51,17 +53,6 @@ export default function SimularCredito() {
         <label className="STitulos">Ingresa la cantidad en MXM:</label>
 
         <input type="number" id="numerico" name="numerico" step="100" />
-
-        <label>Selecciona el propósito del crédito:</label>
-
-        <select value={selectedOption} onChange={handleSelectChange}>
-          <option value="" disabled>
-            Selecciona una opción
-          </option>
-          <option value="comercial">Comercial</option>
-          <option value="agricola">Agrícola</option>
-          <option value="ganadera">Ganadera</option>
-        </select>
       </div>
     </section>
   );
