@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export default function SimularCredito() {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState("");
+  const [quantity, setQuantity] = useState<number | string>("");
 
   const handleButtonClick = (buttonType: string) => {
     setSelectedButton(buttonType);
@@ -11,6 +12,18 @@ export default function SimularCredito() {
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
+  };
+
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantity(event.target.value);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity((prevQuantity) => Math.max(Number(prevQuantity) - 1000, 0));
+  };
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => Number(prevQuantity) + 1000);
   };
 
   return (
@@ -52,7 +65,27 @@ export default function SimularCredito() {
 
         <label className="STitulos">Ingresa la cantidad en MXM:</label>
 
-        <input type="number" id="numerico" name="numerico" step="100" />
+        <div className="quantity-input">
+          <button
+            className="quantity-button Bizquierda"
+            onClick={decrementQuantity}
+          >
+            -
+          </button>
+          <input
+            type="number"
+            id="numerico"
+            name="numerico"
+            value={quantity}
+            onChange={handleQuantityChange}
+          />
+          <button
+            className="quantity-button Bderecha"
+            onClick={incrementQuantity}
+          >
+            +
+          </button>
+        </div>
       </div>
     </section>
   );
