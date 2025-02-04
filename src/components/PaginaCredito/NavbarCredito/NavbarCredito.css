@@ -50,11 +50,11 @@ header {
   cursor: pointer;
 }
 
-.container .nav-link {
+.container .nav-link2 {
   display: flex;
 }
 
-.container .nav-link li {
+.container .nav-link2 li {
   list-style: none;
   margin: 0 0.5rem;
 }
@@ -112,7 +112,7 @@ header {
     display: block;
   }
 
-  .container .nav-link {
+  .container .nav-link2 {
     flex-direction: column;
     justify-content: space-evenly;
     background-color: #fff;
@@ -125,7 +125,7 @@ header {
     transition: all 0.7s;
   }
 
-  .nav-link.active {
+  .nav-link2.active {
     top: 15%;
     transition: all 0.7s ease-in;
   }

@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="logo">
               <img src="public/logos/LogoCajaSolidaria.png" alt="Logo" />
             </div>
-            <ul className={isOpen ? "nav-link active" : "nav-link"}>
+            <ul className={isOpen ? "nav-link2 active" : "nav-link2"}>
               <li>
                 <Link to="/">Home</Link>
               </li>

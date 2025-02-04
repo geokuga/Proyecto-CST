@@ -4,7 +4,7 @@ import React, { useState } from "react";
 export default function SimularCredito() {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState("");
-  const [quantity, setQuantity] = useState<number | string>("");
+  const [quantity, setQuantity] = useState<string>("");
 
   const handleButtonClick = (buttonType: string) => {
     setSelectedButton(buttonType);
@@ -15,15 +15,35 @@ export default function SimularCredito() {
   };
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(event.target.value);
+    const inputValue = event.target.value.replace("$", "").replace(/,/g, "");
+    if (inputValue === "" || isNaN(Number(inputValue))) {
+      setQuantity("");
+    } else {
+      const numericValue = Math.min(parseFloat(inputValue), 700000);
+      setQuantity(`$${numericValue.toLocaleString("en-US")}`);
+    }
   };
 
   const decrementQuantity = () => {
-    setQuantity((prevQuantity) => Math.max(Number(prevQuantity) - 1000, 0));
+    setQuantity((prevQuantity) => {
+      const numericValue =
+        prevQuantity === ""
+          ? 0
+          : parseFloat(prevQuantity.replace("$", "").replace(/,/g, ""));
+      return `$${Math.max(numericValue - 1000, 0).toLocaleString("en-US")}`;
+    });
   };
 
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => Number(prevQuantity) + 1000);
+    setQuantity((prevQuantity) => {
+      const numericValue =
+        prevQuantity === ""
+          ? 0
+          : parseFloat(prevQuantity.replace("$", "").replace(/,/g, ""));
+      return `$${Math.min(numericValue + 1000, 500000).toLocaleString(
+        "en-US"
+      )}`;
+    });
   };
 
   return (
@@ -61,6 +81,16 @@ export default function SimularCredito() {
             </button>
             <label>Ganadera</label>
           </div>
+
+          <div className="SContSeleccion">
+            <button
+              className={selectedButton === "personal" ? "selected" : ""}
+              onClick={() => handleButtonClick("personal")}
+            >
+              <i className="fa fa-user" aria-hidden="true"></i>
+            </button>
+            <label>Personal</label>
+          </div>
         </section>
 
         <label className="STitulos">Ingresa la cantidad en MXM:</label>
@@ -73,7 +103,7 @@ export default function SimularCredito() {
             -
           </button>
           <input
-            type="number"
+            type="text"
             id="numerico"
             name="numerico"
             value={quantity}
