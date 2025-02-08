@@ -1,0 +1,29 @@
+.ContRCredito {
+  height: 25vh;
+  width: 100%;
+}
+
+.ContResultInterno {
+  margin-left: 2%;
+  width: 60%;
+  height: 90%;
+  border-radius: 3rem;
+}
+
+.ContResultInterno h2 {
+  padding: 1.5%;
+  color: orange;
+  text-align: center;
+}
+
+.ColeccionResultados {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.resultado-credito {
+  background-color: rgb(240, 239, 239);
+  border-radius: 1rem;
+  text-align: center;
+}

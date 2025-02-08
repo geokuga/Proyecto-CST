@@ -1,8 +1,16 @@
 import "./InputMXM.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function SimularCredito() {
+interface InputMXMProps {
+  onQuantityChange: (valor: string) => void;
+}
+
+const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
   const [quantity, setQuantity] = useState<string>("");
+
+  useEffect(() => {
+    onQuantityChange(quantity);
+  }, [quantity, onQuantityChange]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value.replace("$", "").replace(/,/g, "");
@@ -30,7 +38,7 @@ export default function SimularCredito() {
         prevQuantity === ""
           ? 0
           : parseFloat(prevQuantity.replace("$", "").replace(/,/g, ""));
-      return `$${Math.min(numericValue + 1000, 500000).toLocaleString(
+      return `$${Math.min(numericValue + 1000, 700000).toLocaleString(
         "en-US"
       )}`;
     });
@@ -54,6 +62,7 @@ export default function SimularCredito() {
             name="numerico"
             value={quantity}
             onChange={handleQuantityChange}
+            placeholder="$0"
           />
           <button
             className="quantity-button Bderecha"
@@ -65,4 +74,6 @@ export default function SimularCredito() {
       </div>
     </section>
   );
-}
+};
+
+export default InputMXM;
