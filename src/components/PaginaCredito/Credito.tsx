@@ -3,8 +3,10 @@ import Navbar from "./NavbarCredito/NavbarCredito";
 import Seleccion from "./BotonesSeleccion/BotonesSeleccion";
 import BtonWhatsapp from "../PaginaHome/BtonWhatsApp/BtonWhatsApp";
 import InputMXM from "./InputMXM/InputMXM";
-import ResultadoCredito from "./ResultadoCredito/ResultadoCredito"; // Importa el nuevo componente
+import ResultadoCredito from "./ResultadoCredito/ResultadoCredito";
+import DatosCredito from "./RequisitosCredito/RequisitosCredito";
 import Final from "../PaginaHome/footer/footer";
+import "./Credito.css";
 
 const Credito: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
@@ -39,22 +41,29 @@ const Credito: React.FC = () => {
   };
 
   return (
-    <section className="fondo">
+    <section className="fondoC">
       <div>
         <Navbar />
       </div>
-      <div>
-        <Seleccion
-          selectedButton={selectedButton}
-          handleButtonClick={handleButtonClick}
-        />
-      </div>
-      <div>
-        <InputMXM onQuantityChange={handleQuantityChange} />
-      </div>
-      <div>
-        <ResultadoCredito resultado={resultado} />
-      </div>
+      <section className="body-credito">
+        <div className="requisitos-simular-credito">
+          <DatosCredito />
+        </div>
+        <section className="componentes-simular-credito">
+          <div>
+            <Seleccion
+              selectedButton={selectedButton}
+              handleButtonClick={handleButtonClick}
+            />
+          </div>
+          <div>
+            <InputMXM onQuantityChange={handleQuantityChange} />
+          </div>
+          <div>
+            <ResultadoCredito resultado={resultado} />
+          </div>
+        </section>
+      </section>
       <div>
         <BtonWhatsapp />
       </div>

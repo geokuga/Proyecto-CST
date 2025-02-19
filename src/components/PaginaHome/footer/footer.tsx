@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="FContent">
       <section className="footer_info">
         <div className="footer_width about">
-          <h2>About</h2>
+          <h2>Acerca de</h2>
           <p>
             ¿Tienes alguna pregunta? ¡No dudes en llamarnos! Estamos aquí para
             ayudarte a resolver cualquier duda y hacer que tu experiencia sea lo

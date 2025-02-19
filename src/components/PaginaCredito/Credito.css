@@ -1,3 +1,22 @@
-.fondo {
-  background-color: rgb(230, 229, 229);
+.fondoC {
+  background: linear-gradient(
+    90deg,
+    rgba(232, 232, 232, 1) 0%,
+    rgb(221, 219, 219) 100%
+  );
+}
+
+.body-credito {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.requisitos-simular-credito {
+  flex: 1; /* Toma una proporción del espacio disponible */
+}
+
+.componentes-simular-credito {
+  flex: 2; /* Toma dos proporciones del espacio disponible */
+  display: flex;
+  flex-direction: column;
 }

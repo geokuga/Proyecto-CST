@@ -46,7 +46,7 @@ const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
 
   return (
     <section className="Scontenedor">
-      <div className="SCont">
+      <section className="SCont">
         <label className="STitulos">Ingresa la cantidad en MXM:</label>
 
         <div className="quantity-input">
@@ -71,7 +71,16 @@ const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
             +
           </button>
         </div>
-      </div>
+      </section>
+      <section className="ContSeleccionCredito">
+        <label className="STitulos">Ingresa la cantidad en MXM:</label>
+        <select id="opciones" name="opciones" className="input-Select">
+          <option value="opcion1">Opción 1</option>
+          <option value="opcion2">Opción 2</option>
+          <option value="opcion3">Opción 3</option>
+          <option value="opcion4">Opción 4</option>
+        </select>
+      </section>
     </section>
   );
 };
