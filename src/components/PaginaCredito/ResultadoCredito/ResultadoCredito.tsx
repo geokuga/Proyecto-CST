@@ -13,7 +13,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({ resultado }) => {
       <section className="ContResultInterno">
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <p>IVA</p>
+            <p className="subtitulos-Resultado">IVA</p>
             <p>
               $
               {ResultadoCredito.toLocaleString("en-US", {
@@ -21,6 +21,35 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({ resultado }) => {
                 maximumFractionDigits: 2,
               })}
             </p>
+          </div>
+        </div>
+        <div className="ColeccionResultados">
+          <div className="resultado-credito">
+            <p className="subtitulos-Resultado">Subtotal</p>
+            <p>
+              $
+              {ResultadoCredito.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </p>
+          </div>
+        </div>
+        <div className="ColeccionResultados">
+          <div className="resultado-credito">
+            <p className="subtitulos-Resultado">Total</p>
+            <p>
+              $
+              {ResultadoCredito.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </p>
+          </div>
+        </div>
+        <div className="ColeccionResultados">
+          <div className="resultado-credito">
+            <button>Más información</button>
           </div>
         </div>
       </section>

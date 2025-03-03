@@ -73,12 +73,15 @@ const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
         </div>
       </section>
       <section className="ContSeleccionCredito">
-        <label className="STitulos">Ingresa la cantidad en MXM:</label>
+        <label className="STitulos">Selecciona el plazo a pagar:</label>
         <select id="opciones" name="opciones" className="input-Select">
-          <option value="opcion1">Opción 1</option>
-          <option value="opcion2">Opción 2</option>
-          <option value="opcion3">Opción 3</option>
-          <option value="opcion4">Opción 4</option>
+          <option value="opcion1">Semanales</option>
+          <option value="opcion2">Quincenales</option>
+          <option value="opcion3">Mensuales</option>
+          <option value="opcion4">Bimestrales</option>
+          <option value="opcion5">Semestrales</option>
+          <option value="opcion5">Anual</option>
+          <option value="opcion5">Único pago</option>
         </select>
       </section>
     </section>

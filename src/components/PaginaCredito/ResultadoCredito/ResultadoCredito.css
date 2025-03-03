@@ -1,26 +1,46 @@
 .ContRCredito {
-  height: 25vh;
+  height: auto;
   width: 100%;
 }
 
 .ContResultInterno {
+  background-color: aliceblue;
   margin-left: 2%;
   width: 30%;
-  height: 90%;
+  height: auto;
   border-radius: 3rem;
 }
 
 .ColeccionResultados {
-  margin-top: 1%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.ColeccionResultados p {
-  color: orange;
+  padding: 5%;
 }
 
 .resultado-credito {
   border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.subtitulos-Resultado {
+  text-align: start;
+  color: orange;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+}
+
+.ColeccionResultados button {
+  width: auto;
+  font-size: 110%;
+  padding: 3% 0;
+  font-family: "Georgia", serif;
   text-align: center;
+  font-weight: bold;
+  background: transparent;
+  color: orange;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 5%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
