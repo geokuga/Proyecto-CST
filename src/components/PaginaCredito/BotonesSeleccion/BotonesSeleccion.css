@@ -32,21 +32,22 @@
 }
 
 .button-selection .iconC {
-  font-size: 460%;
+  font-size: 660%;
+  color: white;
 }
 
 .selection button {
   border-radius: 50%;
   margin: 2%;
   margin-bottom: 0;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 10rem;
+  height: 10rem;
   border: none;
-  background-color: lightgray;
+  background-color: rgb(134, 131, 131);
   cursor: pointer;
 }
 
-.selection button.selected {
+.selection button.selected .iconC {
   color: orange;
 }
 

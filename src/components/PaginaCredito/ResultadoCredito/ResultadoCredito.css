@@ -1,11 +1,12 @@
 .ContRCredito {
   height: auto;
   width: 100%;
+  margin-bottom: 5%;
 }
 
 .ContResultInterno {
   background-color: aliceblue;
-  margin-left: 2%;
+  margin-left: 32%;
   width: 30%;
   height: auto;
   border-radius: 3rem;

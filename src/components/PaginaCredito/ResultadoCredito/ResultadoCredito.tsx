@@ -7,6 +7,7 @@ interface ResultadoCreditoProps {
 
 const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({ resultado }) => {
   const ResultadoCredito = resultado / 48;
+  const ResultadoIVA = 0;
 
   return (
     <section className="ContRCredito">
