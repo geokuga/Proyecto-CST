@@ -3,9 +3,13 @@ import React, { useState, useEffect } from "react";
 
 interface InputMXMProps {
   onQuantityChange: (valor: string) => void;
+  onPlazoChange: (plazo: string) => void;
 }
 
-const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
+const InputMXM: React.FC<InputMXMProps> = ({
+  onQuantityChange,
+  onPlazoChange,
+}) => {
   const [quantity, setQuantity] = useState<string>("");
 
   useEffect(() => {
@@ -44,6 +48,10 @@ const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
     });
   };
 
+  const handlePlazoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onPlazoChange(event.target.value);
+  };
+
   return (
     <section className="Scontenedor">
       <section className="SCont">
@@ -72,16 +80,22 @@ const InputMXM: React.FC<InputMXMProps> = ({ onQuantityChange }) => {
           </button>
         </div>
       </section>
+
       <section className="ContSeleccionCredito">
         <label className="STitulos">Selecciona el plazo a pagar:</label>
-        <select id="opciones" name="opciones" className="input-Select">
-          <option value="opcion1">Semanales</option>
-          <option value="opcion2">Quincenales</option>
-          <option value="opcion3">Mensuales</option>
-          <option value="opcion4">Bimestrales</option>
-          <option value="opcion5">Semestrales</option>
-          <option value="opcion5">Anual</option>
-          <option value="opcion5">Único pago</option>
+        <select
+          id="opciones"
+          name="opciones"
+          className="input-Select"
+          onChange={handlePlazoChange}
+        >
+          <option value="semanales">Semanales</option>
+          <option value="quincenales">Quincenales</option>
+          <option value="mensuales">Mensuales</option>
+          <option value="bimestrales">Bimestrales</option>
+          <option value="semestrales">Semestrales</option>
+          <option value="anual">Anual</option>
+          <option value="unico">Único pago</option>
         </select>
       </section>
     </section>
