@@ -12,6 +12,7 @@ const Credito: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<string>("");
   const [plazo, setPlazo] = useState<string>("Semanales");
+  const [paymentPlan, setPaymentPlan] = useState<number>(0);
 
   const handleButtonClick = (buttonType: string) => {
     setSelectedButton(buttonType);
@@ -24,7 +25,9 @@ const Credito: React.FC = () => {
   const handlePlazoChange = (nuevoPlazo: string) => {
     setPlazo(nuevoPlazo);
   };
-
+  const handlePaymentPlan = (paymentPlan: number) => {
+    setPaymentPlan(paymentPlan);
+  }
   return (
     <section className="fondoC">
       <div>
@@ -45,6 +48,7 @@ const Credito: React.FC = () => {
             <InputMXM
               onQuantityChange={handleQuantityChange}
               onPlazoChange={handlePlazoChange}
+              onPaymentPlan={handlePaymentPlan}
             />
           </div>
           <div>
@@ -52,7 +56,8 @@ const Credito: React.FC = () => {
               tipoCredito={selectedButton}
               cantidad={quantity}
               plazo={plazo}
-            />
+              paymentPlan={paymentPlan}
+            /> 
           </div>
         </section>
       </section>

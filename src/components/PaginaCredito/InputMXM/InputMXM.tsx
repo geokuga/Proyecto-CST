@@ -4,13 +4,16 @@ import React, { useState, useEffect } from "react";
 interface InputMXMProps {
   onQuantityChange: (valor: string) => void;
   onPlazoChange: (plazo: string) => void;
+  onPaymentPlan: (plan: number) => void;
 }
 
 const InputMXM: React.FC<InputMXMProps> = ({
   onQuantityChange,
   onPlazoChange,
+  onPaymentPlan,
 }) => {
   const [quantity, setQuantity] = useState<string>("");
+  const [availablePaymentPlan, setAvailablePaymentPlan] = useState<number[]>([]);
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -51,6 +54,36 @@ const InputMXM: React.FC<InputMXMProps> = ({
   const handlePlazoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onPlazoChange(event.target.value);
   };
+  const handlePaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onPaymentPlan(parseFloat(event.target.value));
+  };
+
+  useEffect(() => {
+    const inputValue = quantity.replace("$", "").replace(/,/g, "");
+    const quantityCleaned = parseFloat(inputValue);
+    if (!isNaN(quantityCleaned)) {
+      const paymentPlans = getAvailablePaymentPlan(quantityCleaned);
+      setAvailablePaymentPlan(paymentPlans);
+    } else {
+      setAvailablePaymentPlan([]);
+    }
+  }, [quantity]);
+
+  const getAvailablePaymentPlan = (quantity: number) => {
+    if (quantity >= 500 && quantity < 5000) {
+      return [12];
+    }
+    else if (quantity >= 5000 && quantity < 20000) {
+      return [12, 18, 24];
+    }
+    else if (quantity >= 20000 && quantity < 50000) {
+      return [12, 18, 24, 36];
+    }
+    else if (quantity >= 50000) {
+      return [12, 18, 24, 36, 60];
+    }
+    return [];
+  }
 
   return (
     <section className="Scontenedor">
@@ -80,9 +113,21 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </button>
         </div>
       </section>
-
       <section className="ContSeleccionCredito">
-        <label className="STitulos">Selecciona el plazo a pagar:</label>
+        <label className="STitulos">Selecciona el plan de pago:</label>
+        <select
+          id="opciones"
+          name="opciones"
+          className="input-Select"
+          onChange={handlePaymentPlanChange}
+        >
+          {availablePaymentPlan.map((plazo) => (
+            <option key={plazo} value={plazo}>{plazo} meses</option>
+          ))}
+        </select>
+      </section>
+      <section className="ContSeleccionCredito">
+        <label className="STitulos">Selecciona el plazo de pago:</label>
         <select
           id="opciones"
           name="opciones"
