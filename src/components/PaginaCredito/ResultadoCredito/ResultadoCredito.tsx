@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import TablaAmortizacion from "./TablaAmortizacion";
 import { 
   numberOfPayments,
-  daysBetweenPaymentsCalculation,
   interestCalculation,
   calcularFechasPagos
  } from "./AccruedInterestCalculation";
@@ -25,6 +24,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   const [showTable, setShowTable] = useState(false);
 
   const plan = repaymentPlan;
+  const term = loanTerm;
   let interestRate = 0; 
   let monthlyInterestRate = 0;
   let daysBetweenPayments = 0;
@@ -46,14 +46,13 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
     );
   }
   totalPayments = numberOfPayments(loanTerm, plan);
-  daysBetweenPayments = daysBetweenPaymentsCalculation(loanTerm);
 
   const pagoPorPeriodo = totalPayments > 0 ? loanAmount / totalPayments : 0;
 
 /***** CALCULO DE INTERESES EXACTO **2****/
 
 const start = new Date();
-const {fechasPago, diasEntreFechas} = calcularFechasPagos(start, totalPayments);
+const {fechasPago, diasEntreFechas} = calcularFechasPagos(start, totalPayments, term);
 
 //Funcion secundaria
 const totalIntereses = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {
@@ -67,18 +66,19 @@ const totalIntereses = (paymentDays: number[], pagoPorPeriodo: number, montoPres
 const intereses = totalIntereses(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
 //Funcion secundaria
-const totalIva = (paymentDays: number[]): number => {
+const totalIva = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {
   const iva = loanType === "personal" ? 0.16 : 0;
   let totalIva = 0;
   let interes = 0;
   for(let i = 0; i < paymentDays.length; i++){
-    interes = interestCalculation(loanAmount, paymentDays[i], interestRate);
+    interes = interestCalculation(montoPrestado, paymentDays[i], interestRate);
     totalIva += interes * iva;
+    montoPrestado -= pagoPorPeriodo;
   }
   return totalIva;
 }
 
-const IVA = totalIva(diasEntreFechas);
+const IVA = totalIva(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
 //Funcion primaria
 const Total = (intereses: number, iva: number): number => {

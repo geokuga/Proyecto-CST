@@ -14,6 +14,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
 }) => {
   const [quantity, setQuantity] = useState<string>("");
   const [availablerepaymentPlan, setAvailablerepaymentPlan] = useState<number[]>([]);
+  const [loanTerm, setLoanTerm] = useState<string>("");
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -53,6 +54,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
 
   const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onloanTermChange(event.target.value);
+    setLoanTerm(event.target.value);
   };
   const handlerepaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onrepaymentPlan(parseFloat(event.target.value));
@@ -62,12 +64,17 @@ const InputMXM: React.FC<InputMXMProps> = ({
     const inputValue = quantity.replace("$", "").replace(/,/g, "");
     const quantityCleaned = parseFloat(inputValue);
     if (!isNaN(quantityCleaned)) {
+      if(loanTerm === "unico"){
+        const repaymentPlans = [18];
+        setAvailablerepaymentPlan(repaymentPlans);  
+      }else{
       const repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
       setAvailablerepaymentPlan(repaymentPlans);
+      }
     } else {
       setAvailablerepaymentPlan([]);
     }
-  }, [quantity]);
+  }, [quantity, loanTerm]);
 
   const getAvailablerepaymentPlan = (quantity: number) => {
     if (quantity >= 500 && quantity < 5000) {
@@ -127,7 +134,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
         </select>
       </section>
       <section className="ContSeleccionCredito">
-        <label className="STitulos">Selecciona el loanTerm de pago:</label>
+        <label className="STitulos">Selecciona el plazo:</label>
         <select
           id="opciones"
           name="opciones"

@@ -1,7 +1,7 @@
 import React from "react";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { format, addMonths, isWeekend, addDays, differenceInCalendarDays } from "date-fns";
+import { format } from "date-fns";
 import { calcularFechasPagos } from "./AccruedInterestCalculation";
 
 // Extiende jsPDF para incluir lastAutoTable
@@ -36,7 +36,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   const pagoCapital = amount / numeroPagos;
 
   const fechaInicio = new Date();
-  const {fechasPago, diasEntreFechas} = calcularFechasPagos(fechaInicio, numeroPagos);
+  const {fechasPago, diasEntreFechas} = calcularFechasPagos(fechaInicio, numeroPagos, loanTerm);
 
   let saldo = saldoInicial;
   const rows: any[] = [];
@@ -90,7 +90,8 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       42
     );
     doc.text(`Monto prestado: $${amount.toFixed(2)}`, 10, 50);
-    doc.text(`Número de pagos: ${numeroPagos}`, 10, 58);
+    doc.text(`Plan de pago: ${repaymentPlan} meses`, 10, 58);
+    doc.text(`Número de pagos: ${numeroPagos}`, 10, 64);
 
     autoTable(doc, {
       startY: 66,

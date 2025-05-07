@@ -1,4 +1,4 @@
-import { format, addMonths, isWeekend, addDays, differenceInCalendarDays } from "date-fns";
+import { format, addMonths, isWeekend, addDays, differenceInCalendarDays, addWeeks, addYears } from "date-fns";
 
 export const numberOfPayments = (
     loanTerm: string,
@@ -31,7 +31,7 @@ export const numberOfPayments = (
     }
     return numberOfPayments;
 }
-
+/*
 export const daysBetweenPaymentsCalculation = (loanTerm: string): number => {
     let daysBetweenPayments = 0;
     switch (loanTerm) {
@@ -61,7 +61,7 @@ export const daysBetweenPaymentsCalculation = (loanTerm: string): number => {
     }
     return daysBetweenPayments;
 }
-
+ */
 export const interestCalculation = (
     loanAmount: number,
     paymentDays: number,
@@ -124,15 +124,38 @@ export const generatePaymentDays = (
 };
 
 
-export const calcularFechasPagos = (inicio: Date, numeroPagos: number): {fechasPago: Date[]; diasEntreFechas: number[]} => {
+export const calcularFechasPagos = (inicio: Date, numeroPagos: number, loanTerm: string): {fechasPago: Date[]; diasEntreFechas: number[]} => {
     const fechasPago: Date[] = [];
     const diasEntreFechas: number[] = [];
 
     let fecha = inicio;
 
     for (let i = 0; i < numeroPagos; i++) {
-      fecha = addMonths(fecha, 1);
-
+        switch(loanTerm){
+            case "semanales":
+                fecha = addWeeks(fecha, 1);
+                break;
+            case "quincenales":
+                fecha = addWeeks(fecha, 2);
+                break;
+            case "mensuales":
+                fecha = addMonths(fecha, 1);
+                break;
+            case "bimestrales":
+                fecha = addMonths(fecha, 2);
+                break;
+            case "semestrales":
+                fecha = addMonths(fecha, 6);
+                break;
+            case "anual":
+                fecha = addYears(fecha, 1);
+                break;
+            case "unico":
+                fecha = addMonths(fecha, 18);
+                break;
+            default:
+                break;
+        }
 
       while (isWeekend2(fecha)) {
         fecha = addDays(fecha, 1);
