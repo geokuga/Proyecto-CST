@@ -1,7 +1,8 @@
 import React from "react";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { format, addMonths, isWeekend, addDays } from "date-fns";
+import { format, addMonths, isWeekend, addDays, differenceInCalendarDays } from "date-fns";
+import { calcularFechasPagos } from "./AccruedInterestCalculation";
 
 // Extiende jsPDF para incluir lastAutoTable
 declare module "jspdf" {
@@ -13,37 +14,29 @@ declare module "jspdf" {
 }
 
 interface TablaAmortizacionProps {
-  tipoCredito: string;
-  cantidad: number;
-  plazo: string;
-  tasaMensual: number;
+  loanType: string;
+  amount: number;
+  loanTerm: string;
+  interestRate: number;
+  repaymentPlan: number;
+  pagosTotales: number;
 }
 
 const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
-  tipoCredito,
-  cantidad,
-  plazo,
-  tasaMensual,
+  loanType,
+  amount,
+  loanTerm,
+  interestRate,
+  repaymentPlan,
+  pagosTotales
 }) => {
-  const calcularFechasPagos = (inicio: Date, numeroPagos: number): Date[] => {
-    const fechas: Date[] = [];
-    let fecha = inicio;
-    for (let i = 0; i < numeroPagos; i++) {
-      fecha = addMonths(fecha, 1);
-      while (isWeekend(fecha)) {
-        fecha = addDays(fecha, 1);
-      }
-      fechas.push(fecha);
-    }
-    return fechas;
-  };
 
-  const numeroPagos = 12; // Solo mensual por ahora
-  const saldoInicial = cantidad;
-  const pagoCapital = cantidad / numeroPagos;
+  const numeroPagos = pagosTotales;
+  const saldoInicial = amount;
+  const pagoCapital = amount / numeroPagos;
 
   const fechaInicio = new Date();
-  const fechasPago = calcularFechasPagos(fechaInicio, numeroPagos);
+  const {fechasPago, diasEntreFechas} = calcularFechasPagos(fechaInicio, numeroPagos);
 
   let saldo = saldoInicial;
   const rows: any[] = [];
@@ -51,9 +44,9 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   let totalIVA = 0;
   let totalPago = 0;
 
-  for (let i = 0; i < numeroPagos; i++) {
-    const interes = saldo * tasaMensual;
-    const iva = tipoCredito === "personal" ? interes * 0.16 : 0;
+  for (let i = 0; i < diasEntreFechas.length; i++) {
+    const interes = (saldo * diasEntreFechas[i] * interestRate) / 360;
+    const iva = loanType === "personal" ? interes * 0.16 : 0;
     const total = pagoCapital + interes + iva;
 
     totalInteres += interes;
@@ -63,6 +56,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     rows.push([
       i + 1,
       format(fechasPago[i], "dd/MM/yyyy"),
+      `${diasEntreFechas[i]}`,
       `$${saldo.toFixed(2)}`,
       `$${pagoCapital.toFixed(2)}`,
       `$${interes.toFixed(2)}`,
@@ -77,7 +71,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     const doc = new jsPDF();
 
     doc.setFontSize(12);
-    doc.text("Producto contratado: " + tipoCredito.toUpperCase(), 10, 10);
+    doc.text("Producto contratado: " + loanType.toUpperCase(), 10, 10);
     doc.text(
       "Fecha de solicitud: " + format(fechaInicio, "dd/MM/yyyy"),
       10,
@@ -91,11 +85,11 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       34
     );
     doc.text(
-      `Tasa de interés: ${(tasaMensual * 12 * 100).toFixed(2)}% (anual)`,
+      `Tasa de interés: ${(interestRate * 120).toFixed(2)}% (anual)`,
       10,
       42
     );
-    doc.text(`Monto prestado: $${cantidad.toFixed(2)}`, 10, 50);
+    doc.text(`Monto prestado: $${amount.toFixed(2)}`, 10, 50);
     doc.text(`Número de pagos: ${numeroPagos}`, 10, 58);
 
     autoTable(doc, {
@@ -104,6 +98,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
         [
           "Número",
           "Fecha de pago",
+          "dias",
           "Saldo",
           "Pago Capital",
           "Pago Interés",

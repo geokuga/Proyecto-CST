@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 
 interface InputMXMProps {
   onQuantityChange: (valor: string) => void;
-  onPlazoChange: (plazo: string) => void;
-  onPaymentPlan: (plan: number) => void;
+  onloanTermChange: (loanTerm: string) => void;
+  onrepaymentPlan: (plan: number) => void;
 }
 
 const InputMXM: React.FC<InputMXMProps> = ({
   onQuantityChange,
-  onPlazoChange,
-  onPaymentPlan,
+  onloanTermChange,
+  onrepaymentPlan,
 }) => {
   const [quantity, setQuantity] = useState<string>("");
-  const [availablePaymentPlan, setAvailablePaymentPlan] = useState<number[]>([]);
+  const [availablerepaymentPlan, setAvailablerepaymentPlan] = useState<number[]>([]);
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -51,30 +51,30 @@ const InputMXM: React.FC<InputMXMProps> = ({
     });
   };
 
-  const handlePlazoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onPlazoChange(event.target.value);
+  const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onloanTermChange(event.target.value);
   };
-  const handlePaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onPaymentPlan(parseFloat(event.target.value));
+  const handlerepaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onrepaymentPlan(parseFloat(event.target.value));
   };
 
   useEffect(() => {
     const inputValue = quantity.replace("$", "").replace(/,/g, "");
     const quantityCleaned = parseFloat(inputValue);
     if (!isNaN(quantityCleaned)) {
-      const paymentPlans = getAvailablePaymentPlan(quantityCleaned);
-      setAvailablePaymentPlan(paymentPlans);
+      const repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
+      setAvailablerepaymentPlan(repaymentPlans);
     } else {
-      setAvailablePaymentPlan([]);
+      setAvailablerepaymentPlan([]);
     }
   }, [quantity]);
 
-  const getAvailablePaymentPlan = (quantity: number) => {
+  const getAvailablerepaymentPlan = (quantity: number) => {
     if (quantity >= 500 && quantity < 5000) {
-      return [12];
+      return [4, 6, 8, 12];
     }
     else if (quantity >= 5000 && quantity < 20000) {
-      return [12, 18, 24];
+      return [6, 12, 18, 24];
     }
     else if (quantity >= 20000 && quantity < 50000) {
       return [12, 18, 24, 36];
@@ -119,20 +119,20 @@ const InputMXM: React.FC<InputMXMProps> = ({
           id="opciones"
           name="opciones"
           className="input-Select"
-          onChange={handlePaymentPlanChange}
+          onChange={handlerepaymentPlanChange}
         >
-          {availablePaymentPlan.map((plazo) => (
-            <option key={plazo} value={plazo}>{plazo} meses</option>
+          {availablerepaymentPlan.map((loanTerm) => (
+            <option key={loanTerm} value={loanTerm}>{loanTerm} meses</option>
           ))}
         </select>
       </section>
       <section className="ContSeleccionCredito">
-        <label className="STitulos">Selecciona el plazo de pago:</label>
+        <label className="STitulos">Selecciona el loanTerm de pago:</label>
         <select
           id="opciones"
           name="opciones"
           className="input-Select"
-          onChange={handlePlazoChange}
+          onChange={handleloanTermChange}
         >
           <option value="semanales">Semanales</option>
           <option value="quincenales">Quincenales</option>

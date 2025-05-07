@@ -11,8 +11,8 @@ import "./Credito.css";
 const Credito: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<string>("");
-  const [plazo, setPlazo] = useState<string>("Semanales");
-  const [paymentPlan, setPaymentPlan] = useState<number>(0);
+  const [loanTerm, setloanTerm] = useState<string>("Semanales");
+  const [repaymentPlan, setrepaymentPlan] = useState<number>(0);
 
   const handleButtonClick = (buttonType: string) => {
     setSelectedButton(buttonType);
@@ -22,11 +22,11 @@ const Credito: React.FC = () => {
     setQuantity(valor);
   };
 
-  const handlePlazoChange = (nuevoPlazo: string) => {
-    setPlazo(nuevoPlazo);
+  const handleloanTermChange = (nuevoloanTerm: string) => {
+    setloanTerm(nuevoloanTerm);
   };
-  const handlePaymentPlan = (paymentPlan: number) => {
-    setPaymentPlan(paymentPlan);
+  const handlerepaymentPlan = (repaymentPlan: number) => {
+    setrepaymentPlan(repaymentPlan);
   }
   return (
     <section className="fondoC">
@@ -47,16 +47,16 @@ const Credito: React.FC = () => {
           <div>
             <InputMXM
               onQuantityChange={handleQuantityChange}
-              onPlazoChange={handlePlazoChange}
-              onPaymentPlan={handlePaymentPlan}
+              onloanTermChange={handleloanTermChange}
+              onrepaymentPlan={handlerepaymentPlan}
             />
           </div>
           <div>
             <ResultadoCredito
-              tipoCredito={selectedButton}
-              cantidad={quantity}
-              plazo={plazo}
-              paymentPlan={paymentPlan}
+              loanType={selectedButton}
+              amount={quantity}
+              loanTerm={loanTerm}
+              repaymentPlan={repaymentPlan}
             /> 
           </div>
         </section>

@@ -1,0 +1,152 @@
+import { format, addMonths, isWeekend, addDays, differenceInCalendarDays } from "date-fns";
+
+export const numberOfPayments = (
+    loanTerm: string,
+    plan: number): number => {
+    let numberOfPayments = 1;
+    switch (loanTerm) {
+        case "semanales":
+            numberOfPayments = 4 * plan; //depende de plazo
+            break;
+        case "quincenales":
+            numberOfPayments = 2 * plan;
+            break;
+        case "mensuales":
+            numberOfPayments = plan;
+            break;
+        case "bimestrales":
+            numberOfPayments = Math.floor(plan / 2);
+            break;
+        case "semestrales":
+            numberOfPayments = plan / 6;
+            break;
+        case "anual":
+            numberOfPayments = 1;
+            break;
+        case "unico":
+            numberOfPayments = 1;
+            break;
+        default:
+            numberOfPayments = 1;
+    }
+    return numberOfPayments;
+}
+
+export const daysBetweenPaymentsCalculation = (loanTerm: string): number => {
+    let daysBetweenPayments = 0;
+    switch (loanTerm) {
+        case "semanales":
+            daysBetweenPayments = 7;
+            break;
+        case "quincenales":
+            daysBetweenPayments = 15;
+            break;
+        case "mensuales":
+            daysBetweenPayments = 30;
+            break;
+        case "bimestrales":
+            daysBetweenPayments = 60;
+            break;
+        case "semestrales":
+            daysBetweenPayments = 180;
+            break;
+        case "anual":
+            daysBetweenPayments = 360;
+            break;
+        case "unico":
+            daysBetweenPayments = 540;
+            break;
+        default:
+
+    }
+    return daysBetweenPayments;
+}
+
+export const interestCalculation = (
+    loanAmount: number,
+    paymentDays: number,
+    annualRate: number): number => {
+    let interest = 0;
+    interest = (loanAmount * paymentDays * annualRate) / 360;
+    return interest;
+}
+
+export const ivatCalculation = (amount: number): number => {
+    return amount * 0.16;
+}
+
+export const periodPayment = (
+    paymentByPeriod: number,
+    interes: number,
+    ivat: number
+) => {
+    return paymentByPeriod + interes + ivat;
+}
+
+// Verifica si el día es fin de semana
+const isWeekend2 = (date: Date): boolean => {
+    const day = date.getDay();
+    return day === 0 || day === 6;
+};
+
+// Cuenta los días hábiles entre dos fechas
+const countWeekdays = (start: Date, end: Date): number => {
+    let count = 0;
+    const current = new Date(start);
+    while (current < end) {
+        count++;
+        current.setDate(current.getDate() + 1);
+    }
+    return count;
+};
+
+// Genera el arreglo de días hábiles por pago
+export const generatePaymentDays = (
+    startDate: Date,
+    numberOfPayments: number,
+    daysBetweenPayments: number
+): number[] => {
+    const paymentDays: number[] = [];
+
+    let current = new Date(startDate);
+
+    for (let i = 0; i < numberOfPayments; i++) {
+        const next = new Date(current);
+        next.setDate(next.getDate() + daysBetweenPayments);
+
+        const days = countWeekdays(current, next);
+        paymentDays.push(days);
+
+        current = next;
+    }
+
+    return paymentDays;
+};
+
+
+export const calcularFechasPagos = (inicio: Date, numeroPagos: number): {fechasPago: Date[]; diasEntreFechas: number[]} => {
+    const fechasPago: Date[] = [];
+    const diasEntreFechas: number[] = [];
+
+    let fecha = inicio;
+
+    for (let i = 0; i < numeroPagos; i++) {
+      fecha = addMonths(fecha, 1);
+
+
+      while (isWeekend2(fecha)) {
+        fecha = addDays(fecha, 1);
+      }
+      
+      fechasPago.push(fecha);
+
+      if(i === 0){
+        diasEntreFechas.push(differenceInCalendarDays(fecha, inicio));
+      }
+      else{
+        const anterior = fechasPago[i - 1];
+        diasEntreFechas.push(differenceInCalendarDays(fecha, anterior));
+      }
+    }
+    return { fechasPago, diasEntreFechas };
+  };

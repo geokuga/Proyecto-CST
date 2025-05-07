@@ -1,153 +1,90 @@
 import "./ResultadoCredito.css";
 import React, { useState } from "react";
 import TablaAmortizacion from "./TablaAmortizacion";
+import { 
+  numberOfPayments,
+  daysBetweenPaymentsCalculation,
+  interestCalculation,
+  calcularFechasPagos
+ } from "./AccruedInterestCalculation";
+
 
 interface ResultadoCreditoProps {
-  tipoCredito: string | null;
-  cantidad: string;
-  plazo: string;
-  paymentPlan: number;
+  loanType: string | null;
+  amount: string;
+  loanTerm: string;
+  repaymentPlan: number;
 }
 
 const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
-  tipoCredito,
-  cantidad,
-  plazo,
-  paymentPlan,
+  loanType,
+  amount,
+  loanTerm,
+  repaymentPlan,
 }) => {
-  const [mostrarTabla, setMostrarTabla] = useState(false);
+  const [showTable, setShowTable] = useState(false);
 
-  const cantidadNumerica = parseFloat(
-    cantidad.replace("$", "").replace(/,/g, "")
+  const plan = repaymentPlan;
+  let interestRate = 0; 
+  let monthlyInterestRate = 0;
+  let daysBetweenPayments = 0;
+  interestRate = loanType === "personal" ? 0.18 : 0.15;
+  monthlyInterestRate = loanType === "personal" ? 0.018 : 0.015;
+  let totalPayments = 1;
+
+  const loanAmount = parseFloat(
+    amount.replace("$", "").replace(/,/g, "")
   );
 
-  if (isNaN(cantidadNumerica) || !tipoCredito) {
+  if (isNaN(loanAmount) || !loanType) {
     return (
       <section className="ContRCredito">
         <p className="mensaje-error">
-          Por favor, selecciona un tipo de crédito y una cantidad válida.
+          Por favor, selecciona un tipo de crédito y una amount válida.
         </p>
       </section>
     );
   }
+  totalPayments = numberOfPayments(loanTerm, plan);
+  daysBetweenPayments = daysBetweenPaymentsCalculation(loanTerm);
 
-  const plan = paymentPlan;
-  let tasa = 0; 
-  let daysBetweenPayments = 0;
-  tasa = tipoCredito === "personal" ? 0.18 : 0.15;
-  let pagosTotales = 1;
-  //modificar aqui
-  switch (plazo) {
-    case "semanales":
-      pagosTotales = 4 * plan; //depende de plazo
-      daysBetweenPayments = 7;
-      break;
-    case "quincenales":
-      pagosTotales = 2 * plan;
-      daysBetweenPayments = 15;
-      break;
-    case "mensuales":
-      pagosTotales = plan;
-      daysBetweenPayments = 30;
-      break;
-    case "bimestrales":
-      pagosTotales = Math.floor(plan / 2);
-      daysBetweenPayments = 60; 
-      break;
-    case "semestrales":
-      pagosTotales = plan / 6;
-      daysBetweenPayments = 180;
-      break;
-    case "anual":
-      pagosTotales = 1;
-      daysBetweenPayments = 360;
-      break;
-    case "unico":
-      pagosTotales = 1;
-      break;
-    default:
-      pagosTotales = 1;
-  }
+  const pagoPorPeriodo = totalPayments > 0 ? loanAmount / totalPayments : 0;
 
-  const pagoPorPeriodo = pagosTotales > 0 ? cantidadNumerica / pagosTotales : 0;
-
-/***** CALCULO DE INTERESES EXACTO ******/
-
-// Verifica si el día es fin de semana
-const isWeekend = (date: Date): boolean => {
-  const day = date.getDay();
-  return day === 0 || day === 6;
-};
-
-// Cuenta los días hábiles entre dos fechas
-const countWeekdays = (start: Date, end: Date): number => {
-  let count = 0;
-  const current = new Date(start);
-  while (current < end) {
-    if (!isWeekend(current)) {
-      count++;
-    }
-    current.setDate(current.getDate() + 1);
-  }
-  return count;
-};
-
-// Genera el arreglo de días hábiles por pago
-const generatePaymentDays = (
-  startDate: Date,
-  numberOfPayments: number,
-  daysBetweenPayments: number
-): number[] => {
-  const paymentDays: number[] = [];
-
-  let current = new Date(startDate);
-
-  for (let i = 0; i < numberOfPayments; i++) {
-    const next = new Date(current);
-    next.setDate(next.getDate() + daysBetweenPayments);
-
-    const days = countWeekdays(current, next);
-    paymentDays.push(days);
-
-    current = next;
-  }
-
-  return paymentDays;
-};
+/***** CALCULO DE INTERESES EXACTO **2****/
 
 const start = new Date();
-const paymentDays = generatePaymentDays(start, pagosTotales, daysBetweenPayments);
-console.log(paymentDays);
+const {fechasPago, diasEntreFechas} = calcularFechasPagos(start, totalPayments);
 
 //Funcion secundaria
-const totalIntereses = (paymentDays: number[]): number => {
+const totalIntereses = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {
   let totalIntereses = 0;
   for(let i = 0; i < paymentDays.length; i++){
-    totalIntereses += (cantidadNumerica * paymentDays[i] * tasa) / 360;
+    totalIntereses += interestCalculation(montoPrestado, paymentDays[i],interestRate);
+    montoPrestado -= pagoPorPeriodo;
   }
   return totalIntereses;
 }
-const intereses = totalIntereses(paymentDays);
+const intereses = totalIntereses(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
 //Funcion secundaria
 const totalIva = (paymentDays: number[]): number => {
-  const iva = tipoCredito === "personal" ? 0.16 : 0;
+  const iva = loanType === "personal" ? 0.16 : 0;
   let totalIva = 0;
   let interes = 0;
   for(let i = 0; i < paymentDays.length; i++){
-    interes = (cantidadNumerica * paymentDays[i] * tasa) / 360;
+    interes = interestCalculation(loanAmount, paymentDays[i], interestRate);
     totalIva += interes * iva;
   }
   return totalIva;
 }
 
-const IVA = totalIva(paymentDays);
+const IVA = totalIva(diasEntreFechas);
 
 //Funcion primaria
 const Total = (intereses: number, iva: number): number => {
   return intereses + iva;
 }
-const TOTAL = Total(intereses, IVA) + cantidadNumerica; 
+const TOTAL = Total(intereses, IVA) + loanAmount; 
 
 /* CALCULO DE INTERESES EXACTO */ 
   return (
@@ -180,7 +117,7 @@ const TOTAL = Total(intereses, IVA) + cantidadNumerica;
         </div>
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <p className="subtitulos-Resultado">Pago por periodo ({plazo})</p>
+            <p className="subtitulos-Resultado">Pago por periodo ({loanTerm})</p>
             <p>
               $
               {pagoPorPeriodo.toLocaleString("en-US", {
@@ -205,18 +142,20 @@ const TOTAL = Total(intereses, IVA) + cantidadNumerica;
 
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <button onClick={() => setMostrarTabla(true)}>
+            <button onClick={() => setShowTable(true)}>
               Más información
             </button>
           </div>
         </div>
 
-        {mostrarTabla && (
+        {showTable && (
           <TablaAmortizacion
-            tipoCredito={tipoCredito}
-            cantidad={cantidadNumerica}
-            plazo={plazo}
-            tasaMensual={tasa}
+            loanType={loanType}
+            amount={loanAmount}
+            loanTerm={loanTerm}
+            interestRate={interestRate}
+            repaymentPlan={plan}
+            pagosTotales={totalPayments}
           />
         )}
       </section>
