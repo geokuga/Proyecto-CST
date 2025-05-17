@@ -1,4 +1,4 @@
-import { format, addMonths, isWeekend, addDays, differenceInCalendarDays, addWeeks, addYears } from "date-fns";
+import { addMonths, addDays, differenceInCalendarDays, addWeeks, addYears } from "date-fns";
 
 export const numberOfPayments = (
     loanTerm: string,

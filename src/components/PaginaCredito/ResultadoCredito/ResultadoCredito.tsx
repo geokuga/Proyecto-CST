@@ -26,10 +26,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   const plan = repaymentPlan;
   const term = loanTerm;
   let interestRate = 0; 
-  let monthlyInterestRate = 0;
-  let daysBetweenPayments = 0;
   interestRate = loanType === "personal" ? 0.18 : 0.15;
-  monthlyInterestRate = loanType === "personal" ? 0.018 : 0.015;
   let totalPayments = 1;
 
   const loanAmount = parseFloat(
@@ -52,7 +49,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
 /***** CALCULO DE INTERESES EXACTO **2****/
 
 const start = new Date();
-const {fechasPago, diasEntreFechas} = calcularFechasPagos(start, totalPayments, term);
+const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
 
 //Funcion secundaria
 const totalIntereses = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {

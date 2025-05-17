@@ -38,46 +38,19 @@ export default function Publicidad() {
     <section className="PContent">
       <section className="Slider-wrapper">
         <div className="slider" ref={sliderRef}>
-          <img
-            id="slide-1"
-            src="public/img/publicidad1.jpg"
-            alt="Publicidad 1"
-          />
-          <img
-            id="slide-2"
-            src="public/img/publicidad2.jpg"
-            alt="Publicidad 2"
-          />
-          <img
-            id="slide-3"
-            src="public/img/publicidad3.jpg"
-            alt="Publicidad 3"
-          />
-          <img
-            id="slide-4"
-            src="public/img/publicidad4.jpg"
-            alt="Publicidad 4"
-          />
-          <img
-            id="slide-5"
-            src="public/img/publicidad5.jpg"
-            alt="Publicidad 5"
-          />
-          <img
-            id="slide-6"
-            src="public/img/publicidad6.jpg"
-            alt="Publicidad 6"
-          />
-          <img
-            id="slide-7"
-            src="public/img/publicidad7.jpg"
-            alt="Publicidad 7"
-          />
-          <img
-            id="slide-8"
-            src="public/img/publicidad8.jpg"
-            alt="Publicidad 8"
-          />
+          {Array.from({ length: 8 }).map((_, i) => {
+            const saved = localStorage.getItem(`advert-image-${i + 1}`);
+            const fallback = `public/img/publicidad${i + 1}.jpg`;
+            return (
+              <img
+                key={i}
+                id={`slide-${i + 1}`}
+                src={saved || fallback}
+                alt={`Publicidad ${i + 1}`}
+              />
+            );
+          })}
+
         </div>
         <div className="slider-nav">
           <a href="#slide-1" aria-label="Ir a Publicidad 1"></a>

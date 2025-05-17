@@ -8,6 +8,7 @@ import Descripcion from "./components/PaginaHome/descripcion/Descripcion";
 import Mision from "./components/PaginaHome/MisionVision/MisionVision";
 import Final from "./components/PaginaHome/footer/footer";
 import Credito from "./components/PaginaCredito/Credito";
+import AdvertisingManager from "./components/PaginaHome/publicidad/advertisingManager";
 import {
   BrowserRouter as Router,
   Route,
@@ -51,6 +52,7 @@ function MainContent() {
           }
         />
         <Route path="/credito" element={<Credito />} />
+        <Route path="/advertisingManager" element={<AdvertisingManager />} />
       </Routes>
     </div>
   );
