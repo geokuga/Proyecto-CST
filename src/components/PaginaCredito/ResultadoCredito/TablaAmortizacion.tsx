@@ -34,9 +34,10 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   const numeroPagos = pagosTotales;
   const saldoInicial = amount;
   const pagoCapital = amount / numeroPagos;
+  const ivaRate = loanType === "personal" ? 0.16 : 0;
 
   const fechaInicio = new Date();
-  const {fechasPago, diasEntreFechas} = calcularFechasPagos(fechaInicio, numeroPagos, loanTerm);
+  const { fechasPago, diasEntreFechas } = calcularFechasPagos(fechaInicio, numeroPagos, loanTerm);
 
   let saldo = saldoInicial;
   const rows: any[] = [];
@@ -70,31 +71,37 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   const exportarPDF = () => {
     const doc = new jsPDF();
 
-    doc.setFontSize(12);
-    doc.text("Producto contratado: " + loanType.toUpperCase(), 10, 10);
+    doc.setFontSize(8);
+    doc.text("Producto contratado: PRESTAMO " + loanType.toUpperCase() + " CON TOPE A " + amount +
+      " CON GARANTIA LIQUIDA MINIMA DEL 10% MAXIMO 20% A UN PLAZO DE " + repaymentPlan + " MESES",
+      10, 10);
     doc.text(
       "Fecha de solicitud: " + format(fechaInicio, "dd/MM/yyyy"),
       10,
       18
     );
-    doc.text("Fecha de entrega: " + format(fechaInicio, "dd/MM/yyyy"), 10, 26);
+    doc.text("Fecha de entrega: " + format(fechaInicio, "dd/MM/yyyy"), 60, 18);
     doc.text(
       "Fecha de vencimiento: " +
-        format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
-      10,
-      34
+      format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
+      110,
+      18
     );
     doc.text(
       `Tasa de interés: ${(interestRate * 120).toFixed(2)}% (anual)`,
       10,
-      42
+      24
     );
-    doc.text(`Monto prestado: $${amount.toFixed(2)}`, 10, 50);
-    doc.text(`Plan de pago: ${repaymentPlan} meses`, 10, 58);
-    doc.text(`Número de pagos: ${numeroPagos}`, 10, 64);
+    doc.text(
+      `CAT(Costo Anual Total): %${ivaRate.toFixed(2)} ANUAL`,
+      60,
+      24
+    );
+    doc.text(`Monto prestado: $${amount.toFixed(2)}`, 10, 30);
+    doc.text(`Número de pagos: ${numeroPagos}`, 60, 30);
 
     autoTable(doc, {
-      startY: 66,
+      startY: 40,
       head: [
         [
           "Número",
@@ -103,31 +110,41 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
           "Saldo",
           "Pago Capital",
           "Pago Interés",
-          "IVA",
+          "I.V.A",
           "Total a pagar",
         ],
       ],
       body: rows,
       styles: { fontSize: 9 },
       theme: "grid",
-      headStyles: { fillColor: [22, 160, 133] },
+      headStyles: { fillColor: [184, 184, 184] },
     });
+    // Coordenada vertical base
+    const y = doc.lastAutoTable.finalY + 6;
 
-    doc.text(
-      `Total intereses: $${totalInteres.toFixed(2)}`,
-      10,
-      doc.lastAutoTable.finalY + 10
-    );
-    doc.text(
-      `Total IVA: $${totalIVA.toFixed(2)}`,
-      10,
-      doc.lastAutoTable.finalY + 18
-    );
-    doc.text(
-      `Total pagado: $${totalPago.toFixed(2)}`,
-      10,
-      doc.lastAutoTable.finalY + 26
-    );
+    // Establece el color del borde
+    doc.setDrawColor(184, 184, 184);
+
+    // Usar posiciones relativas en lugar de cols[4].x, etc.
+    const columnWidths = [20, 30, 15, 30, 30, 30, 30, 35]; // Ajusta a tu tabla
+    let x = 103; // margen izquierdo inicial
+
+    const totales = [
+      "", "", "", "",
+      `$${amount.toFixed(2)}`,
+      `$${totalInteres.toFixed(2)}`,
+      `$${totalIVA.toFixed(2)}`,
+      `$${totalPago.toFixed(2)}`
+    ];
+
+    for (let i = 4; i <= 7; i++) {
+      const rectWidth = columnWidths[i] - 8; // más ancho
+      doc.rect(x, y - 6, rectWidth, 6);
+      doc.text(totales[i], x + 1, y - 2);
+      x += rectWidth; // avanza lo justo, más pegado
+    }
+
+
 
     doc.save("amortizacion.pdf");
   };

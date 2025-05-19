@@ -4,24 +4,28 @@ export default function AdvertisingManager() {
   const [previews, setPreviews] = useState<string[]>([]);
 
   const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files) return;
+  const files = e.target.files;
+  if (!files) return;
 
-    const newPreviews: string[] = [];
+  const previewsArray: string[] = [];
 
-    Array.from(files).forEach((file, index) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result as string;
-        newPreviews.push(base64);
-        localStorage.setItem(`advert-image-${index + 1}`, base64);
-        if (newPreviews.length === files.length) {
-          setPreviews([...newPreviews]);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-  };
+  Array.from(files).forEach((file, index) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      // Guardamos con clave numerada: advert-image-1, advert-image-2, ...
+      localStorage.setItem(`advert-image-${index + 1}`, base64);
+      previewsArray[index] = base64;
+
+      // Si ya se leyeron todas, actualizamos el estado
+      if (previewsArray.filter(Boolean).length === files.length) {
+        setPreviews([...previewsArray]);
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
 
   return (
     <div>
