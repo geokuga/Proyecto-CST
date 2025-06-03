@@ -37,7 +37,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
     return (
       <section className="ContRCredito">
         <p className="mensaje-error">
-          Por favor, selecciona un tipo de crédito y una amount válida.
+          Por favor, selecciona un tipo de crédito y una cantidad válida.
         </p>
       </section>
     );

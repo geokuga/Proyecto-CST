@@ -44,6 +44,7 @@ const Credito: React.FC = () => {
               handleButtonClick={handleButtonClick}
             />
           </div>
+          <section className="prompts-table">
           <div>
             <InputMXM
               onQuantityChange={handleQuantityChange}
@@ -59,6 +60,7 @@ const Credito: React.FC = () => {
               repaymentPlan={repaymentPlan}
             /> 
           </div>
+          </section>
         </section>
       </section>
       <div>

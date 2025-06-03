@@ -120,7 +120,8 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </button>
         </div>
       </section>
-      <section className="ContSeleccionCredito">
+      <section className="fila-2">
+      <div className="ContSeleccionCredito">
         <label className="STitulos">Selecciona el plan de pago:</label>
         <select
           id="opciones"
@@ -132,8 +133,8 @@ const InputMXM: React.FC<InputMXMProps> = ({
             <option key={loanTerm} value={loanTerm}>{loanTerm} meses</option>
           ))}
         </select>
-      </section>
-      <section className="ContSeleccionCredito">
+      </div>
+      <div className="ContSeleccionCredito">
         <label className="STitulos">Selecciona el plazo:</label>
         <select
           id="opciones"
@@ -149,6 +150,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
           <option value="anual">Anual</option>
           <option value="unico">Único pago</option>
         </select>
+      </div>
       </section>
     </section>
   );

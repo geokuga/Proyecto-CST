@@ -2,12 +2,13 @@
   height: auto;
   width: 100%;
   margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 .ContResultInterno {
   background-color: aliceblue;
-  margin-left: 32%;
-  width: 30%;
+  width: 80%;
   height: auto;
   border-radius: 3rem;
 }
@@ -44,4 +45,8 @@
   transition: 0.5s;
   margin: 5%;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mensaje-error{
+  text-align: center;
 }

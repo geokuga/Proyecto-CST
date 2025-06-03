@@ -21,9 +21,19 @@
   flex-direction: column;
 }
 
+.prompts-table{
+  display: flex;
+  justify-content: center;
+  
+}
+
 @media (max-width: 768px) {
   .body-credito {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .prompts-table{
+    flex-direction: column;
   }
 }
