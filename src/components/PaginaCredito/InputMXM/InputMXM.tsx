@@ -15,6 +15,8 @@ const InputMXM: React.FC<InputMXMProps> = ({
   const [quantity, setQuantity] = useState<string>("");
   const [availablerepaymentPlan, setAvailablerepaymentPlan] = useState<number[]>([]);
   const [loanTerm, setLoanTerm] = useState<string>("");
+  const [repaymentPlan, setRepaymentPlan] = useState<number | null>(null);
+
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -57,19 +59,22 @@ const InputMXM: React.FC<InputMXMProps> = ({
     setLoanTerm(event.target.value);
   };
   const handlerepaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onrepaymentPlan(parseFloat(event.target.value));
+    const value = parseFloat(event.target.value);
+    setRepaymentPlan(value);
+    onrepaymentPlan(value);
   };
+
 
   useEffect(() => {
     const inputValue = quantity.replace("$", "").replace(/,/g, "");
     const quantityCleaned = parseFloat(inputValue);
     if (!isNaN(quantityCleaned)) {
-      if(loanTerm === "unico"){
+      if (loanTerm === "unico") {
         const repaymentPlans = [18];
-        setAvailablerepaymentPlan(repaymentPlans);  
-      }else{
-      const repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
-      setAvailablerepaymentPlan(repaymentPlans);
+        setAvailablerepaymentPlan(repaymentPlans);
+      } else {
+        const repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
+        setAvailablerepaymentPlan(repaymentPlans);
       }
     } else {
       setAvailablerepaymentPlan([]);
@@ -121,36 +126,45 @@ const InputMXM: React.FC<InputMXMProps> = ({
         </div>
       </section>
       <section className="fila-2">
-      <div className="ContSeleccionCredito">
-        <label className="STitulos">Selecciona el plan de pago:</label>
-        <select
-          id="opciones"
-          name="opciones"
-          className="input-Select"
-          onChange={handlerepaymentPlanChange}
-        >
-          {availablerepaymentPlan.map((loanTerm) => (
-            <option key={loanTerm} value={loanTerm}>{loanTerm} meses</option>
-          ))}
-        </select>
-      </div>
-      <div className="ContSeleccionCredito">
-        <label className="STitulos">Selecciona el plazo:</label>
-        <select
-          id="opciones"
-          name="opciones"
-          className="input-Select"
-          onChange={handleloanTermChange}
-        >
-          <option value="semanales">Semanales</option>
-          <option value="quincenales">Quincenales</option>
-          <option value="mensuales">Mensuales</option>
-          <option value="bimestrales">Bimestrales</option>
-          <option value="semestrales">Semestrales</option>
-          <option value="anual">Anual</option>
-          <option value="unico">Único pago</option>
-        </select>
-      </div>
+        <div className="ContSeleccionCredito">
+          <label className="STitulos">Selecciona el plan de pago:</label>
+          <select
+            id="opciones"
+            name="opciones"
+            className="input-Select"
+            onChange={handlerepaymentPlanChange}
+          >
+            {availablerepaymentPlan.map((loanTerm) => (
+              <option key={loanTerm} value={loanTerm}>{loanTerm} meses</option>
+            ))}
+          </select>
+        </div>
+        <div className="ContSeleccionCredito">
+          <label className="STitulos">Selecciona el plazo:</label>
+          <select
+            id="opciones"
+            name="opciones"
+            className="input-Select"
+            onChange={handleloanTermChange}
+          >
+            <option value="semanales">Semanales</option>
+            <option value="quincenales">Quincenales</option>
+            <option value="mensuales">Mensuales</option>
+            <option value="bimestrales">Bimestrales</option>
+            {repaymentPlan !== null && repaymentPlan >= 6 && repaymentPlan < 12 && (
+              <>
+                <option value="semestrales">Semestrales</option>
+              </>
+            )}
+            {repaymentPlan !== null && repaymentPlan >= 12 && (
+              <>
+                <option value="anual">Anual</option>
+                <option value="unico">Único pago</option>
+              </>
+            )}
+
+          </select>
+        </div>
       </section>
     </section>
   );
