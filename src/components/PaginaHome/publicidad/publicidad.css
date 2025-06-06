@@ -25,9 +25,9 @@
 
 .slider img {
   scroll-snap-align: start;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid rgb(230, 229, 229);
-  flex: 0 0 50%; /* Ajustar el ancho de las imágenes al 50% del contenedor */
+  flex: 0 0 33%; /* Ajustar el ancho de las imágenes al 50% del contenedor */
 }
 
 .slider-nav {
