@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./publicidad.css";
 
 export default function Publicidad() {
@@ -50,7 +50,6 @@ export default function Publicidad() {
               />
             );
           })}
-
         </div>
         <div className="slider-nav">
           <a href="#slide-1" aria-label="Ir a Publicidad 1"></a>
