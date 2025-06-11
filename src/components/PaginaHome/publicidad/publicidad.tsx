@@ -40,7 +40,7 @@ export default function Publicidad() {
         <div className="slider" ref={sliderRef}>
           {Array.from({ length: 8 }).map((_, i) => {
             const saved = localStorage.getItem(`advert-image-${i + 1}`);
-            const fallback = `public/img/publicidad${i + 1}.jpg`;
+            const fallback = `img/publicidad${i + 1}.jpg`;
             return (
               <img
                 key={i}

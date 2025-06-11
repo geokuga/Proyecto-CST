@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="container">
           <nav>
             <div className="logo">
-              <img src="public/logos/LogoCajaSolidaria.png" alt="Logo" />
+              <img src="logos/LogoCajaSolidaria.png" alt="Logo" />
             </div>
             <ul className={isOpen ? "nav-link active" : "nav-link"}>
               <li>

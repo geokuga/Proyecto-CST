@@ -1,5 +1,6 @@
 .banner {
-  background: url("public/img/fondo_header1.png") no-repeat center center;
+  background: url("../../../../public/img/fondo_header1.png") no-repeat center
+    center;
   background-size: cover;
   height: 85vh;
   width: 100%;

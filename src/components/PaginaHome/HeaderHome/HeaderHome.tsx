@@ -26,7 +26,7 @@ export default function HeaderHome() {
           </Link>
         </center>
       </section>
-      <img src="public/logos/caña.png" alt="Logo Caña" />
+      <img src="logos/caña.png" alt="Logo Caña" />
     </section>
   );
 }
