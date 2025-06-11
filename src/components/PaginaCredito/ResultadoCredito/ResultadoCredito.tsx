@@ -1,12 +1,11 @@
 import "./ResultadoCredito.css";
 import React, { useState } from "react";
 import TablaAmortizacion from "./TablaAmortizacion";
-import { 
+import {
   numberOfPayments,
   interestCalculation,
-  calcularFechasPagos
- } from "./AccruedInterestCalculation";
-
+  calcularFechasPagos,
+} from "./AccruedInterestCalculation";
 
 interface ResultadoCreditoProps {
   loanType: string | null;
@@ -25,65 +24,61 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
 
   const plan = repaymentPlan;
   const term = loanTerm;
-  let interestRate = 0; 
-  interestRate = loanType === "personal" ? 0.18 : 0.15;
-  let totalPayments = 1;
 
-  const loanAmount = parseFloat(
-    amount.replace("$", "").replace(/,/g, "")
-  );
+  // Valor por defecto para tipo de crédito
+  const tipoCredito = loanType || "personal";
 
-  if (isNaN(loanAmount) || !loanType) {
-    return (
-      <section className="ContRCredito">
-        <p className="mensaje-error">
-          Por favor, selecciona un tipo de crédito y una cantidad válida.
-        </p>
-      </section>
-    );
-  }
-  totalPayments = numberOfPayments(loanTerm, plan);
+  // Valor por defecto para el monto
+  const sanitizedAmount = amount?.replace("$", "").replace(/,/g, "") || "0";
+  const loanAmount = parseFloat(sanitizedAmount);
+  const interestRate = tipoCredito === "personal" ? 0.18 : 0.15;
 
+  // Calcular pagos totales
+  const totalPayments = numberOfPayments(term, plan);
   const pagoPorPeriodo = totalPayments > 0 ? loanAmount / totalPayments : 0;
 
-/***** CALCULO DE INTERESES EXACTO **2****/
+  /***** CALCULO DE INTERESES EXACTO *****/
+  const start = new Date();
+  const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
 
-const start = new Date();
-const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
+  const totalIntereses = (
+    paymentDays: number[],
+    pagoPorPeriodo: number,
+    montoPrestado: number
+  ): number => {
+    let total = 0;
+    for (let i = 0; i < paymentDays.length; i++) {
+      total += interestCalculation(montoPrestado, paymentDays[i], interestRate);
+      montoPrestado -= pagoPorPeriodo;
+    }
+    return total;
+  };
+  const intereses = totalIntereses(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
-//Funcion secundaria
-const totalIntereses = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {
-  let totalIntereses = 0;
-  for(let i = 0; i < paymentDays.length; i++){
-    totalIntereses += interestCalculation(montoPrestado, paymentDays[i],interestRate);
-    montoPrestado -= pagoPorPeriodo;
-  }
-  return totalIntereses;
-}
-const intereses = totalIntereses(diasEntreFechas, pagoPorPeriodo, loanAmount);
+  const totalIva = (
+    paymentDays: number[],
+    pagoPorPeriodo: number,
+    montoPrestado: number
+  ): number => {
+    const iva = tipoCredito === "personal" ? 0.16 : 0;
+    let total = 0;
+    for (let i = 0; i < paymentDays.length; i++) {
+      const interes = interestCalculation(
+        montoPrestado,
+        paymentDays[i],
+        interestRate
+      );
+      total += interes * iva;
+      montoPrestado -= pagoPorPeriodo;
+    }
+    return total;
+  };
 
-//Funcion secundaria
-const totalIva = (paymentDays: number[], pagoPorPeriodo: number, montoPrestado: number): number => {
-  const iva = loanType === "personal" ? 0.16 : 0;
-  let totalIva = 0;
-  let interes = 0;
-  for(let i = 0; i < paymentDays.length; i++){
-    interes = interestCalculation(montoPrestado, paymentDays[i], interestRate);
-    totalIva += interes * iva;
-    montoPrestado -= pagoPorPeriodo;
-  }
-  return totalIva;
-}
+  const IVA = totalIva(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
-const IVA = totalIva(diasEntreFechas, pagoPorPeriodo, loanAmount);
+  const Total = (intereses: number, iva: number): number => intereses + iva;
+  const TOTAL = Total(intereses, IVA) + loanAmount;
 
-//Funcion primaria
-const Total = (intereses: number, iva: number): number => {
-  return intereses + iva;
-}
-const TOTAL = Total(intereses, IVA) + loanAmount; 
-
-/* CALCULO DE INTERESES EXACTO */ 
   return (
     <section className="ContRCredito">
       <section className="ContResultInterno">
@@ -102,7 +97,7 @@ const TOTAL = Total(intereses, IVA) + loanAmount;
 
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <p className="subtitulos-Resultado">IVA (16%)</p>
+            <p className="subtitulos-Resultado">IVA</p>
             <p>
               $
               {IVA.toLocaleString("en-US", {
@@ -112,9 +107,10 @@ const TOTAL = Total(intereses, IVA) + loanAmount;
             </p>
           </div>
         </div>
+
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <p className="subtitulos-Resultado">Pago por periodo ({loanTerm})</p>
+            <p className="subtitulos-Resultado">Pago por periodo ({term})</p>
             <p>
               $
               {pagoPorPeriodo.toLocaleString("en-US", {
@@ -124,6 +120,7 @@ const TOTAL = Total(intereses, IVA) + loanAmount;
             </p>
           </div>
         </div>
+
         <div className="ColeccionResultados">
           <div className="resultado-credito">
             <p className="subtitulos-Resultado">Total a pagar</p>
@@ -139,17 +136,15 @@ const TOTAL = Total(intereses, IVA) + loanAmount;
 
         <div className="ColeccionResultados">
           <div className="resultado-credito">
-            <button onClick={() => setShowTable(true)}>
-              Más información
-            </button>
+            <button onClick={() => setShowTable(true)}>Más información</button>
           </div>
         </div>
 
         {showTable && (
           <TablaAmortizacion
-            loanType={loanType}
+            loanType={tipoCredito}
             amount={loanAmount}
-            loanTerm={loanTerm}
+            loanTerm={term}
             interestRate={interestRate}
             repaymentPlan={plan}
             pagosTotales={totalPayments}
