@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "./NavbarCredito/NavbarCredito";
+import Navbar from "../PaginaHome/navbar/Navbar";
 import Seleccion from "./BotonesSeleccion/BotonesSeleccion";
 import BtonWhatsapp from "../PaginaHome/BtonWhatsApp/BtonWhatsApp";
 import InputMXM from "./InputMXM/InputMXM";
@@ -27,7 +27,7 @@ const Credito: React.FC = () => {
   };
   const handlerepaymentPlan = (repaymentPlan: number) => {
     setrepaymentPlan(repaymentPlan);
-  }
+  };
   return (
     <section className="fondoC">
       <div>
@@ -45,21 +45,21 @@ const Credito: React.FC = () => {
             />
           </div>
           <section className="prompts-table">
-          <div>
-            <InputMXM
-              onQuantityChange={handleQuantityChange}
-              onloanTermChange={handleloanTermChange}
-              onrepaymentPlan={handlerepaymentPlan}
-            />
-          </div>
-          <div>
-            <ResultadoCredito
-              loanType={selectedButton}
-              amount={quantity}
-              loanTerm={loanTerm}
-              repaymentPlan={repaymentPlan}
-            /> 
-          </div>
+            <div>
+              <InputMXM
+                onQuantityChange={handleQuantityChange}
+                onloanTermChange={handleloanTermChange}
+                onrepaymentPlan={handlerepaymentPlan}
+              />
+            </div>
+            <div>
+              <ResultadoCredito
+                loanType={selectedButton}
+                amount={quantity}
+                loanTerm={loanTerm}
+                repaymentPlan={repaymentPlan}
+              />
+            </div>
           </section>
         </section>
       </section>

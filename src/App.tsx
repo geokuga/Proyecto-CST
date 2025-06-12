@@ -9,6 +9,10 @@ import Mision from "./components/PaginaHome/MisionVision/MisionVision";
 import Final from "./components/PaginaHome/footer/footer";
 import Credito from "./components/PaginaCredito/Credito";
 import AdvertisingManager from "./components/PaginaHome/publicidad/advertisingManager";
+import Promociones from "./components/Promociones/Promociones";
+import Water from "./components/Water/Water";
+import OtrosBeneficios from "./components/OtrosBeneficios/OtrosBeneficios";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -51,6 +55,10 @@ function MainContent() {
             </>
           }
         />
+
+        <Route path="/promociones" element={<Promociones />} />
+        <Route path="/water" element={<Water />} />
+        <Route path="/otrosBeneficios" element={<OtrosBeneficios />} />
         <Route path="/credito" element={<Credito />} />
         <Route path="/advertisingManager" element={<AdvertisingManager />} />
       </Routes>
