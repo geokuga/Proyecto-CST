@@ -1,0 +1,70 @@
+.DContenedor {
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.DContent {
+  width: 33%;
+  height: 100%;
+  background: linear-gradient(to right, #e67e22, #f39c12);
+  color: blanchedalmond;
+  border-radius: 10px 0 0 10px;
+}
+
+.DTitulo {
+  text-align: center;
+  font-size: 130%;
+  padding: 7%;
+  padding-top: 12%;
+}
+
+.DTexto {
+  font-family: Arial, sans-serif;
+  text-align: justify;
+  hyphens: auto;
+  font-size: 109%;
+  padding: 4%;
+  padding-top: 3%;
+}
+
+.DContentImagen {
+  width: 45%;
+  height: 100%;
+  background-color: gray;
+  background: url("../../../../public/img/header2.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 10px 10px 0;
+  border: 10px solid #f39c12;
+}
+
+.DContentImagen img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .DContenedor {
+    flex-direction: column-reverse;
+    height: 100vh;
+  }
+
+  .DContent {
+    width: 90%;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .DTexto {
+    text-align: center;
+  }
+
+  .DContentImagen {
+    width: 90%;
+    border-radius: 10px 10px 0 0;
+  }
+}
