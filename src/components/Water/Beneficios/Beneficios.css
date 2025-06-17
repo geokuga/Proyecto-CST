@@ -1,0 +1,52 @@
+.beneficios-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  gap: 2rem;
+  background: none;
+  overflow: hidden;
+  margin-top: 9%;
+  margin-bottom: 9%;
+}
+
+.beneficios-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  /*background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);*/
+  background: linear-gradient(135deg, #0099cc 0%, #0053a6 100%);
+  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.beneficios-container img {
+  width: 28%;
+  height: auto;
+  transform: scaleX(-1);
+  z-index: 1;
+  margin-left: 10%;
+}
+
+.beneficios-container-text {
+  width: 70%;
+  z-index: 1;
+  text-align: justify;
+  margin-left: 8%;
+}
+
+.beneficios-container-text h2 {
+  font-size: 210%;
+  margin-top: 2%;
+  margin-bottom: 7%;
+}
+
+.beneficios-container-text p {
+  font-size: 180%;
+  line-height: 2.8;
+  color: #333;
+}
