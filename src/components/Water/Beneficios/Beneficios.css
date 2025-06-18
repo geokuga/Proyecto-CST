@@ -7,8 +7,8 @@
   gap: 2rem;
   background: none;
   overflow: hidden;
-  margin-top: 9%;
-  margin-bottom: 9%;
+  margin-top: 3%;
+  margin-bottom: 6%;
 }
 
 .beneficios-container::before {
@@ -25,11 +25,11 @@
 }
 
 .beneficios-container img {
-  width: 28%;
+  width: 24.35%;
   height: auto;
   transform: scaleX(-1);
   z-index: 1;
-  margin-left: 10%;
+  margin-left: 13%;
 }
 
 .beneficios-container-text {
@@ -40,13 +40,23 @@
 }
 
 .beneficios-container-text h2 {
-  font-size: 210%;
+  font-size: 190%;
   margin-top: 2%;
   margin-bottom: 7%;
+  font-family: "Playfair Display", serif;
 }
 
 .beneficios-container-text p {
-  font-size: 180%;
+  display: flex;
+  align-items: center;
+  font-size: 170%;
   line-height: 2.8;
   color: #333;
+  font-family: "Playfair Display", serif;
+}
+
+.Icon-Beneficios-Water {
+  color: #0053a6;
+  font-size: 180%;
+  margin-right: 5%;
 }

@@ -17,23 +17,31 @@ export default function Beneficios() {
       <div className="beneficios-container-text">
         <h2>Beneficios del Proyecto Water</h2>
         <p>
-          <FontAwesomeIcon icon={faPercent} /> Tasa de interés baja
+          <FontAwesomeIcon icon={faPercent} className="Icon-Beneficios-Water" />{" "}
+          Tasa de interés baja
         </p>
         <p>
-          <FontAwesomeIcon icon={faBolt} /> Respuesta rápida
+          <FontAwesomeIcon icon={faBolt} className="Icon-Beneficios-Water" />{" "}
+          Respuesta rápida
         </p>
         <p>
-          <FontAwesomeIcon icon={faLeaf} /> Crédito responsable y sustentable
+          <FontAwesomeIcon icon={faLeaf} className="Icon-Beneficios-Water" />{" "}
+          Crédito responsable y sustentable
         </p>
         <p>
-          <FontAwesomeIcon icon={faHeart} /> Impacto positivo
+          <FontAwesomeIcon icon={faHeart} className="Icon-Beneficios-Water" />{" "}
+          Impacto positivo
         </p>
         <p>
-          <FontAwesomeIcon icon={faUsers} /> Ideal para hogares, escuelas,
-          comunidades
+          <FontAwesomeIcon icon={faUsers} className="Icon-Beneficios-Water" />{" "}
+          Ideal para hogares, escuelas, comunidades
         </p>
         <p>
-          <FontAwesomeIcon icon={faHandshake} /> Condiciones flexibles
+          <FontAwesomeIcon
+            icon={faHandshake}
+            className="Icon-Beneficios-Water"
+          />
+          Condiciones flexibles
         </p>
       </div>
     </section>
