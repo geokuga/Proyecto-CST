@@ -1,69 +1,73 @@
-.DContenedor {
+.EcoContenedor {
   width: 100%;
-  height: 45vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
-.DContent {
-  width: 33%;
+.EcoContenido {
+  width: 39%;
   height: 100%;
-  background: linear-gradient(to right, #e67e22, #f39c12);
+  background: linear-gradient(to right, #0053a6, #0099cc);
   color: blanchedalmond;
   border-radius: 10px 0 0 10px;
 }
 
-.DTitulo {
+.EcoTitulo {
   text-align: center;
   font-size: 130%;
   padding: 7%;
   padding-top: 12%;
 }
 
-.DTexto {
+.EcoTexto {
   font-family: Arial, sans-serif;
   text-align: justify;
   hyphens: auto;
   font-size: 109%;
   padding: 4%;
   padding-top: 3%;
+  hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
-.DContentImagen {
-  width: 45%;
+.EcoImagen {
+  width: 30%;
   height: 100%;
   background-color: gray;
-  background: url("../../../../public/img/header2.jpg");
+  background: url("../../../../public/img/FondoEcoConsumo.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
-  border: 10px solid #f39c12;
+  border: 10px solid #0099cc;
 }
 
-.DContentImagen img {
+.EcoImagen img {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
 @media (max-width: 768px) {
-  .DContenedor {
+  .EcoContenedor {
     flex-direction: column-reverse;
     height: 100vh;
   }
 
-  .DContent {
+  .EcoContenido {
     width: 90%;
     border-radius: 0 0 10px 10px;
   }
 
-  .DTexto {
+  .EcoTexto {
     text-align: center;
   }
 
-  .DContentImagen {
+  .EcoImagen {
     width: 90%;
     border-radius: 10px 10px 0 0;
   }

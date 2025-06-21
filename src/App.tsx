@@ -1,14 +1,13 @@
 import "./App.css";
 import Navbar from "./components/PaginaHome/navbar/Navbar";
 import HeaderHome from "./components/PaginaHome/HeaderHome/HeaderHome";
-import Publicidad from "./components/PaginaHome/publicidad/publicidad";
 import Requisitos from "./components/PaginaHome/Requisitos/Requisitos";
 import BtonWhatsApp from "./components/PaginaHome/BtonWhatsApp/BtonWhatsApp";
 import Descripcion from "./components/PaginaHome/descripcion/Descripcion";
 import Mision from "./components/PaginaHome/MisionVision/MisionVision";
+import EnlaceIcons from "./components/PaginaHome/EnlaceIcons/EnlaceIcons";
 import Final from "./components/PaginaHome/footer/footer";
 import Credito from "./components/PaginaCredito/Credito";
-import AdvertisingManager from "./components/PaginaHome/publicidad/advertisingManager";
 import Promociones from "./components/Promociones/Promociones";
 import Water from "./components/Water/Water";
 import OtrosBeneficios from "./components/OtrosBeneficios/OtrosBeneficios";
@@ -34,20 +33,20 @@ function MainContent() {
               <div id="headerHome">
                 <HeaderHome />
               </div>
-              <div id="publicidad">
-                <Publicidad />
-              </div>
-              <div id="requisitos">
-                <Requisitos />
-              </div>
-              <div id="btonWhatsApp">
-                <BtonWhatsApp />
-              </div>
               <div id="descripcion">
                 <Descripcion />
               </div>
               <div id="mision">
                 <Mision />
+              </div>
+              <div id="requisitos">
+                <Requisitos />
+              </div>
+              <div id="enlaceIcons">
+                <EnlaceIcons />
+              </div>
+              <div id="btonWhatsApp">
+                <BtonWhatsApp />
               </div>
               <div id="final">
                 <Final />
@@ -60,7 +59,6 @@ function MainContent() {
         <Route path="/water" element={<Water />} />
         <Route path="/otrosBeneficios" element={<OtrosBeneficios />} />
         <Route path="/credito" element={<Credito />} />
-        <Route path="/advertisingManager" element={<AdvertisingManager />} />
       </Routes>
     </div>
   );

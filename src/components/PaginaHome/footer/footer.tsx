@@ -42,7 +42,7 @@ export default function Footer() {
           <h2>Link</h2>
           <ul>
             <li>
-              <a onClick={() => handleScroll("headerHome")}>Home</a>
+              <a onClick={() => handleScroll("headerHome")}>Inicio</a>
             </li>
             <li>
               <a onClick={() => handleScroll("requisitos")}>Servicio</a>
@@ -62,17 +62,14 @@ export default function Footer() {
               <span>
                 <i className="fa fa-map-marker" aria-hidden="true"></i>
               </span>
-              <p>
-                Vicente Guerrero #84, tala centro, código postal 45300, Tala,
-                Jalisco
-              </p>
+              <p>Vicente Guerrero #84, zona centro, 45300, Tala, Jalisco</p>
             </li>
             <li>
               <span>
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </span>
               <a href="mailto:unecajasolidariatala@hotmail.com">
-                unecajasolidariatala@hotmail.com
+                cajasolidariatala@hotmail.com
               </a>
             </li>
             <li>
@@ -85,7 +82,7 @@ export default function Footer() {
         </div>
       </section>
       <div className="copy-right">
-        <p>@Caja Solidaria Tala S.C. de A.P. de R.L. de C.V.</p>
+        <p>Caja Solidaria Tala S.C. de A.P. de R.L. de C.V.</p>
       </div>
     </footer>
   );
