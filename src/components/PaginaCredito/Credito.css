@@ -8,17 +8,7 @@
 
 .body-credito {
   display: flex;
-  flex-direction: row-reverse;
-}
-
-.requisitos-simular-credito {
-  flex: 1; /* Toma una proporción del espacio disponible */
-}
-
-.componentes-simular-credito {
-  flex: 2; /* Toma dos proporciones del espacio disponible */
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .prompts-table{
@@ -27,13 +17,38 @@
   
 }
 
+.left{
+  width: 70%;
+}
+
+.left div{
+  width: 100%;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  padding: 1%;
+}
+
 @media (max-width: 768px) {
   .body-credito {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .prompts-table{
     flex-direction: column;
+  }
+
+  .left{
+    width: 100%;
+  }
+
+  .right{
+    width: 100%;
+    margin-bottom: 20px;
   }
 }

@@ -126,7 +126,6 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </button>
         </div>
       </section>
-      <section className="fila-2">
         <div className="ContSeleccionCredito">
           <label className="STitulos">Tiempo para cubrir:</label>
           <select
@@ -169,7 +168,6 @@ const InputMXM: React.FC<InputMXMProps> = ({
             )}
           </select>
         </div>
-      </section>
     </section>
   );
 };

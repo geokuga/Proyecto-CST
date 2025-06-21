@@ -80,78 +80,59 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   const TOTAL = Total(intereses, IVA) + loanAmount;
 
   return (
-    <section className="ContRCredito">
-      <section className="ContResultInterno">
-        <div className="ColeccionResultados">
-          <div className="resultado-credito">
-            <p className="subtitulos-Resultado">Total intereses</p>
-            <p>
-              $
-              {intereses.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
-
-        <div className="ColeccionResultados">
-          <div className="resultado-credito">
-            <p className="subtitulos-Resultado">IVA</p>
-            <p>
-              $
-              {IVA.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
-
-        <div className="ColeccionResultados">
-          <div className="resultado-credito">
-            <p className="subtitulos-Resultado">Pago por periodo ({term})</p>
-            <p>
-              $
-              {pagoPorPeriodo.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
-
-        <div className="ColeccionResultados">
-          <div className="resultado-credito">
-            <p className="subtitulos-Resultado">Total a pagar</p>
-            <p>
-              $
-              {TOTAL.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
-
-        <div className="ColeccionResultados">
-          <div className="resultado-credito">
-            <button onClick={() => setShowTable(true)}>Más información</button>
-          </div>
-        </div>
-
-        {showTable && (
-          <TablaAmortizacion
-            loanType={tipoCredito}
-            amount={loanAmount}
-            loanTerm={term}
-            interestRate={interestRate}
-            repaymentPlan={plan}
-            pagosTotales={totalPayments}
-          />
-        )}
+    <main className="ContRCredito">
+      <section className="first-row">
+        <section className="titulos">
+          <p className="subtitulos-Resultado">Total intereses</p>
+          <p className="subtitulos-Resultado">IVA</p>
+          <p className="subtitulos-Resultado">Pago por periodo ({term})</p>
+          <p className="subtitulos-Resultado">Total a pagar</p>
+        </section>
+        <section className="resultados">
+          <p>
+            $
+            {intereses.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+          <p>
+            $
+            {IVA.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+          <p>
+            $
+            {pagoPorPeriodo.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+          <p>
+            $
+            {TOTAL.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+        </section>
       </section>
-    </section>
+      <section className="last-row">
+        <button onClick={() => setShowTable(true)}>Más información</button>
+      </section>
+      {showTable && (
+        <TablaAmortizacion
+          loanType={tipoCredito}
+          amount={loanAmount}
+          loanTerm={term}
+          interestRate={interestRate}
+          repaymentPlan={plan}
+          pagosTotales={totalPayments}
+        />
+      )}
+    </main>
   );
 };
 

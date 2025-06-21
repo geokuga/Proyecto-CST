@@ -4,7 +4,6 @@ import Seleccion from "./BotonesSeleccion/BotonesSeleccion";
 import BtonWhatsapp from "../PaginaHome/BtonWhatsApp/BtonWhatsApp";
 import InputMXM from "./InputMXM/InputMXM";
 import ResultadoCredito from "./ResultadoCredito/ResultadoCredito";
-import DatosCredito from "./RequisitosCredito/RequisitosCredito";
 import Final from "../PaginaHome/footer/footer";
 import "./Credito.css";
 
@@ -34,33 +33,24 @@ const Credito: React.FC = () => {
         <Navbar />
       </div>
       <section className="body-credito">
-        <div className="requisitos-simular-credito">
-          <DatosCredito />
-        </div>
-        <section className="componentes-simular-credito">
-          <div>
+        <section className="left">
             <Seleccion
               selectedButton={selectedButton}
               handleButtonClick={handleButtonClick}
             />
-          </div>
-          <section className="prompts-table">
-            <div>
-              <InputMXM
-                onQuantityChange={handleQuantityChange}
-                onloanTermChange={handleloanTermChange}
-                onrepaymentPlan={handlerepaymentPlan}
-              />
-            </div>
-            <div>
-              <ResultadoCredito
-                loanType={selectedButton}
-                amount={quantity}
-                loanTerm={loanTerm}
-                repaymentPlan={repaymentPlan}
-              />
-            </div>
-          </section>
+            <InputMXM
+              onQuantityChange={handleQuantityChange}
+              onloanTermChange={handleloanTermChange}
+              onrepaymentPlan={handlerepaymentPlan}
+            />
+        </section>
+        <section className="right">
+          <ResultadoCredito
+            loanType={selectedButton}
+            amount={quantity}
+            loanTerm={loanTerm}
+            repaymentPlan={repaymentPlan}
+          />
         </section>
       </section>
       <div>

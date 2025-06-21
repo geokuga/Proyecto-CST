@@ -1,20 +1,19 @@
 .ContRCredito {
-  height: auto;
   width: 100%;
-  margin-bottom: 5%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-}
-
-.ContResultInterno {
   background-color: aliceblue;
-  width: 80%;
-  height: auto;
   border-radius: 3rem;
+  padding: 5% 5%;
+  gap: 10px;
+  height: 70%;
 }
 
 .ColeccionResultados {
   padding: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 .resultado-credito {
@@ -49,4 +48,52 @@
 
 .mensaje-error{
   text-align: center;
+}
+
+.titulos{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultados{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultados p{
+  text-align: end;
+
+}
+
+.first-row{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 2%;
+}
+
+.last-row{
+  display: flex;
+  justify-content: center;
+}
+
+.last-row button{
+  font-family: "Georgia", serif;
+  font-size: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: orange;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .ContRCredito{
+    width: 80%;
+  }
 }
