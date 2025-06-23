@@ -35,7 +35,7 @@
   width: 45%;
   height: 100%;
   background-color: gray;
-  background: url("../../../../public/img/header2.jpg");
+  background: url("img/header2.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;
