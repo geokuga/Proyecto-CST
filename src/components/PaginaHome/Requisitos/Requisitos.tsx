@@ -51,10 +51,9 @@ export default function Requisitos() {
           <h3>Requisitos para crédito</h3>
         </div>
         <div className="TextoContentSM TextoContent">
-          <Item text="Acta de nacimiento" /> <Item text="CURP" />
+          <Item text="Identificación oficial" />
           <Item text="Comprobante de domicilio" />
-          <Item text="Identificación oficial del tutor" />
-          <Item text="Cubrir parte social ($960)" />
+          <Item text="Comprobante de ingresos" />
           <center>
             <Link to="/credito">
               <button className="RBton">Simular crédito</button>

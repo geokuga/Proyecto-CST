@@ -78,6 +78,18 @@ export default function Footer() {
               </span>
               <a href="tel:+523847383892">01 (384) 738-3892</a>
             </li>
+            <li>
+              <span>
+                <i className="fa fa-clock-o" aria-hidden="true"></i>
+              </span>
+              <p>
+                <strong>Horario:</strong>
+                <br />
+                9:00 a.m. – 2:30 p.m.
+                <br />
+                4:30 p.m. – 7:00 p.m.
+              </p>
+            </li>
           </ul>
         </div>
       </section>

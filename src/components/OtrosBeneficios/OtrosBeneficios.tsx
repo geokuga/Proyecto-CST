@@ -12,7 +12,7 @@ export default function OtrosBeneficios() {
         <Carrusel start={9} end={17} />
       </div>
       <div>
-        <Carrusel start={18} end={21} />
+        <Carrusel start={18} end={22} />
       </div>
       <div>
         <Footer />
