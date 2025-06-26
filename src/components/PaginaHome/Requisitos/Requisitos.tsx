@@ -54,6 +54,7 @@ export default function Requisitos() {
           <Item text="Identificación oficial" />
           <Item text="Comprobante de domicilio" />
           <Item text="Comprobante de ingresos" />
+          <Item text="Tener un ahorro del 10%" />
           <center>
             <Link to="/credito">
               <button className="RBton">Simular crédito</button>
