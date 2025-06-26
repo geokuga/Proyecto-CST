@@ -17,14 +17,16 @@
 }
 
 .Regalos-Texto-Slider h2 {
-  font-size: 250%;
+  font-family: "Georgia", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 280%;
 }
 
 .Regalos-Texto-Slider p {
-  font-size: 150%;
-  margin-top: 1rem;
   font-family: "Georgia", serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 150%;
+  margin-top: 1rem;
 }
 
 .Contenedor-Slider-Regalos {
@@ -51,8 +53,8 @@
   border-radius: 15px;
   overflow: hidden;
   position: relative;
-  margin-top: -11%;
-  margin-bottom: -10.1%;
+  margin-top: -13%;
+  margin-bottom: -15%;
 }
 
 .slider-regalos {
