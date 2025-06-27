@@ -94,6 +94,17 @@
     text-align: center;
   }
 
+  .Regalos-Texto-Slider h2 {
+    font-size: 179%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .Regalos-Texto-Slider p {
+    font-size: 110%;
+    visibility: hidden;
+  }
+
   .slider-regalos {
     aspect-ratio: 6 / 5;
   }
