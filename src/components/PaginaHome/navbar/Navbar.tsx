@@ -13,6 +13,7 @@ const Navbar = () => {
   const routes = [
     { path: "/", name: "Inicio" },
     { path: "/promociones", name: "Promociones" },
+    { path: "/ahorros", name: "Ahorros" },
     { path: "/water", name: "Proyecto water" },
     { path: "/credito", name: "Crédito" },
     { path: "/otrosBeneficios", name: "Otros beneficios" },
