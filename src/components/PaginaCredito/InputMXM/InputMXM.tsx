@@ -15,9 +15,12 @@ const InputMXM: React.FC<InputMXMProps> = ({
   const [quantity, setQuantity] = useState<string>("");
   const [availablerepaymentPlan, setAvailablerepaymentPlan] = useState<
     number[]
-  >([]);
-  const [loanTerm, setLoanTerm] = useState<string>("");
+  >([4]);
+  const [loanTerm, setLoanTerm] = useState<string>("semanales");
   const [repaymentPlan, setRepaymentPlan] = useState<number | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -126,6 +129,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </button>
         </div>
       </section>
+      <section className="Rcont">
         <div className="ContSeleccionCredito">
           <label className="STitulos">Tiempo para cubrir:</label>
           <select
@@ -147,6 +151,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
             id="opciones"
             name="opciones"
             className="input-Select"
+            value={loanTerm}
             onChange={handleloanTermChange}
           >
             <option value="semanales">Semanales</option>
@@ -168,6 +173,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
             )}
           </select>
         </div>
+        </section>
     </section>
   );
 };

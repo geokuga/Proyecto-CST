@@ -19,6 +19,9 @@
 
 .left{
   width: 70%;
+  gap: 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .left div{

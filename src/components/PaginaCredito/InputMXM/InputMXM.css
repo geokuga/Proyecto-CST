@@ -1,10 +1,11 @@
 .Scontenedor {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   padding: 1%;
   margin-bottom: 2%;
+  gap: 50px;
 }
 
 .SCont,
@@ -78,6 +79,12 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+}
+
+.Rcont{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 @media (max-width: 768px) {
