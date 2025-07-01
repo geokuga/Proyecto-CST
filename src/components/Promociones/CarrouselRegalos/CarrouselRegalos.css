@@ -1,0 +1,111 @@
+.carrousel-regalos {
+  width: 100%;
+  background: url("../../../../public/img/fondo_header1.png") no-repeat center
+    center;
+  background-size: cover;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.Regalos-Texto-Slider {
+  width: 60%;
+  color: white;
+  margin-top: 10%;
+}
+
+.Regalos-Texto-Slider h2 {
+  font-family: "Georgia", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 280%;
+}
+
+.Regalos-Texto-Slider p {
+  font-family: "Georgia", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 150%;
+  margin-top: 1rem;
+}
+
+.Contenedor-Slider-Regalos {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tapa-regalo,
+.Contenedor-Slider-Regalos > img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.tapa-regalo {
+  position: relative;
+  z-index: 1;
+}
+
+.Slider-wrapper-regalos {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-top: -13%;
+  margin-bottom: -15%;
+}
+
+.slider-regalos {
+  display: flex;
+  aspect-ratio: 3 / 2;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.slider-regalos::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-regalos img {
+  scroll-snap-align: start;
+  object-fit: contain;
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .carrousel-regalos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Regalos-Texto-Slider,
+  .Contenedor-Slider-Regalos {
+    width: 100%;
+    text-align: center;
+  }
+
+  .Regalos-Texto-Slider h2 {
+    font-size: 179%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .Regalos-Texto-Slider p {
+    font-size: 110%;
+    visibility: hidden;
+  }
+
+  .slider-regalos {
+    aspect-ratio: 6 / 5;
+  }
+}

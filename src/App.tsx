@@ -11,6 +11,7 @@ import Credito from "./components/PaginaCredito/Credito";
 import Promociones from "./components/Promociones/Promociones";
 import Water from "./components/Water/Water";
 import OtrosBeneficios from "./components/OtrosBeneficios/OtrosBeneficios";
+import Ahorros from "./components/Ahorros/Ahorros";
 
 import {
   BrowserRouter as Router,
@@ -55,6 +56,7 @@ function MainContent() {
           }
         />
 
+        <Route path="/ahorros" element={<Ahorros />} />
         <Route path="/promociones" element={<Promociones />} />
         <Route path="/water" element={<Water />} />
         <Route path="/otrosBeneficios" element={<OtrosBeneficios />} />

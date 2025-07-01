@@ -1,0 +1,95 @@
+.contenedor-ahorro {
+  width: 99%;
+  margin-left: 0.4%;
+  padding: 2rem 0;
+  position: relative;
+  background: linear-gradient(to right, #e67e22, #f39c12);
+  margin-bottom: 0.5%;
+  border-radius: 25px;
+}
+
+.cont-ahorro {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.bloque-ahorro {
+  width: 25%;
+  padding: 2rem;
+}
+
+.titulo-principal-ahorro h2 {
+  text-align: center;
+  color: white;
+  font-family: "Georgia", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 200%;
+}
+
+.titulo-ahorro {
+  display: grid;
+  place-items: center;
+  border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(29, 113, 184, 1) 0%,
+    rgba(50, 163, 221, 1) 100%
+  );
+}
+
+.titulo-ahorro h3 {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 1%;
+}
+
+.contenido-ahorro {
+  display: grid;
+  border-radius: 0px 0px 10px 10px;
+  width: 100%;
+  background-color: #f9b234;
+}
+
+.contenido-ahorro p {
+  position: relative;
+  text-align: start;
+  color: black;
+  font-size: small;
+  margin: 2%;
+  margin-left: 18%;
+}
+
+.Descripcion-tipo-ahorro {
+  line-height: 2;
+  font-size: small;
+  padding: 10%;
+  text-align: center;
+  align-items: center;
+}
+
+.icono-ahorro {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .contenedor-ahorro {
+    margin-bottom: 10%;
+    margin-top: 10%;
+  }
+
+  .titulo-principal-ahorro h2 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .cont-ahorro {
+    flex-direction: column;
+  }
+
+  .bloque-ahorro {
+    width: 100%;
+  }
+}

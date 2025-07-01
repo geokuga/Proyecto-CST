@@ -6,7 +6,7 @@ interface ItemProps {
 const Item: React.FC<ItemProps> = ({ text }) => {
   return (
     <p>
-      <i className="fa fa-check-circle-o icon-water" aria-hidden="true"></i>{" "}
+      <i className="fa fa-check-circle-o icon-water" aria-hidden="true"></i>
       &nbsp;{text}
     </p>
   );
@@ -15,6 +15,7 @@ const Item: React.FC<ItemProps> = ({ text }) => {
 export default function RequisitosWater() {
   return (
     <section className="Container-requisitos-water">
+      <img src="img/PublicidadWater2.png" alt="" />
       <section className="RequisitosContentWater">
         <div className=" TituloContentWater">
           <p>Requisitos</p>
