@@ -15,18 +15,18 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   border-radius: 15px;
-  -ms-overflow-style: none; /* Ocultar la barra de scroll en Internet Explorer y Edge */
-  scrollbar-width: none; /* Ocultar la barra de scroll en Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .slider::-webkit-scrollbar {
-  display: none; /* Ocultar la barra de scroll en Safari y Chrome */
+  display: none;
 }
 
 .slider img {
   scroll-snap-align: start;
   object-fit: contain;
-  flex: 0 0 33%; /* Ajustar el ancho de las imágenes al 50% del contenedor */
+  flex: 0 0 33%;
 }
 
 .slider-nav {
@@ -39,17 +39,27 @@
   z-index: 1;
 }
 
-.slider-nav a {
+/* Estilos nuevos para los botones del nav */
+.nav-dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
+  border: none;
   background-color: white;
   opacity: 0.75;
   transition: opacity ease 250ms;
+  cursor: pointer;
+  padding: 0;
 }
 
-.slider-nav a:hover {
+.nav-dot:hover,
+.nav-dot.active {
   opacity: 1;
+  background-color: orange;
+}
+
+.nav-dot:focus {
+  outline: 2px solid orange;
 }
 
 @media (max-width: 768px) {

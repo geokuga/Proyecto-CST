@@ -1,5 +1,5 @@
 // publicidad.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./publicidad.css";
 
 interface PublicidadProps {
@@ -9,37 +9,65 @@ interface PublicidadProps {
 
 export default function Publicidad({ start, end }: PublicidadProps) {
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const slides = Array.from(slider.querySelectorAll<HTMLImageElement>("img"));
-    let currentIndex = 0;
-
-    if (slides.length === 0) return;
-
-    const updateSlider = () => {
-      const currentSlider = sliderRef.current;
-      if (!currentSlider) return;
-
-      const slideWidth = slides[currentIndex].getBoundingClientRect().width;
-      currentSlider.scrollTo({
-        left: currentIndex * slideWidth,
-        behavior: "smooth",
-      });
-
-      currentIndex = (currentIndex + 1) % slides.length;
-    };
-
-    const interval = setInterval(updateSlider, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const imageList = Array.from(
     { length: end - start + 1 },
     (_, i) => `img/publicidad${start + i}.jpg`
   );
+
+  const scrollToSlide = (
+    index: number,
+    behavior: ScrollBehavior = "smooth"
+  ) => {
+    const slider = sliderRef.current;
+    const slides = slider?.querySelectorAll("img");
+
+    if (slider && slides && slides[index]) {
+      const slideWidth = slides[index].getBoundingClientRect().width;
+      slider.scrollTo({
+        left: index * slideWidth,
+        behavior,
+      });
+    }
+  };
+
+  const startAutoScroll = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % imageList.length;
+        scrollToSlide(nextIndex);
+        return nextIndex;
+      });
+    }, 5000);
+  };
+
+  useEffect(() => {
+    scrollToSlide(currentIndex, "auto");
+    startAutoScroll();
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleNavClick = (index: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    setCurrentIndex(index);
+    scrollToSlide(index);
+
+    timeoutRef.current = setTimeout(() => {
+      startAutoScroll(); // Resume auto scroll after 15 seconds
+    }, 15000);
+  };
 
   return (
     <section className="PContent">
@@ -48,19 +76,20 @@ export default function Publicidad({ start, end }: PublicidadProps) {
           {imageList.map((src, i) => (
             <img
               key={i}
-              id={`slide-${i + 1}`}
               src={src}
               alt={`Publicidad ${i + 1}`}
+              draggable={false}
             />
           ))}
         </div>
         <div className="slider-nav">
           {imageList.map((_, i) => (
-            <a
+            <button
               key={i}
-              href={`#slide-${i + 1}`}
+              onClick={() => handleNavClick(i)}
               aria-label={`Ir a Publicidad ${i + 1}`}
-            ></a>
+              className={`nav-dot ${i === currentIndex ? "active" : ""}`}
+            ></button>
           ))}
         </div>
       </section>
