@@ -1,4 +1,4 @@
-import { addMonths, addDays, differenceInCalendarDays, addWeeks, addYears } from "date-fns";
+import { addMonths, addDays, differenceInCalendarDays, addWeeks, addYears, isWeekend, isSaturday, isSunday } from "date-fns";
 
 export const numberOfPayments = (
     loanTerm: string,
@@ -83,12 +83,6 @@ export const periodPayment = (
     return paymentByPeriod + interes + ivat;
 }
 
-// Verifica si el día es fin de semana
-const isWeekend2 = (date: Date): boolean => {
-    const day = date.getDay();
-    return day === 0 || day === 6;
-};
-
 // Cuenta los días hábiles entre dos fechas
 const countWeekdays = (start: Date, end: Date): number => {
     let count = 0;
@@ -99,7 +93,6 @@ const countWeekdays = (start: Date, end: Date): number => {
     }
     return count;
 };
-
 // Genera el arreglo de días hábiles por pago
 export const generatePaymentDays = (
     startDate: Date,
@@ -139,7 +132,7 @@ export const calcularFechasPagos = (inicio: Date, numeroPagos: number, loanTerm:
                 fecha = addWeeks(fecha, 2);
                 break;
             case "mensuales":
-                fecha = addMonths(fecha, 1);
+                fecha = addDays(fecha, 30);
                 break;
             case "bimestrales":
                 fecha = addMonths(fecha, 2);
@@ -156,10 +149,12 @@ export const calcularFechasPagos = (inicio: Date, numeroPagos: number, loanTerm:
             default:
                 break;
         }
-
-      while (isWeekend2(fecha)) {
-        fecha = addDays(fecha, 1);
-      }
+        if(isSaturday(fecha)){
+            fecha = addDays(fecha, 2);
+        }
+        else if(isSunday(fecha)){
+            fecha = addDays(fecha, 1);
+        }
       
       fechasPago.push(fecha);
 

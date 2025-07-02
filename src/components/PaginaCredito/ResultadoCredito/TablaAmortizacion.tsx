@@ -100,7 +100,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       18
     );
     doc.text(
-      `Tasa de interés: ${(interestRate * 100).toFixed(2)}% (anual)`,
+      `Tasa de interés: ${(interestRate * 10).toFixed(2)}% (anual)`,
       10,
       24
     );
