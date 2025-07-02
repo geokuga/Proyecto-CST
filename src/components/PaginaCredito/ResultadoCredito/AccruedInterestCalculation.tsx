@@ -31,37 +31,7 @@ export const numberOfPayments = (
     }
     return numberOfPayments;
 }
-/*
-export const daysBetweenPaymentsCalculation = (loanTerm: string): number => {
-    let daysBetweenPayments = 0;
-    switch (loanTerm) {
-        case "semanales":
-            daysBetweenPayments = 7;
-            break;
-        case "quincenales":
-            daysBetweenPayments = 15;
-            break;
-        case "mensuales":
-            daysBetweenPayments = 30;
-            break;
-        case "bimestrales":
-            daysBetweenPayments = 60;
-            break;
-        case "semestrales":
-            daysBetweenPayments = 180;
-            break;
-        case "anual":
-            daysBetweenPayments = 360;
-            break;
-        case "unico":
-            daysBetweenPayments = 540;
-            break;
-        default:
 
-    }
-    return daysBetweenPayments;
-}
- */
 export const interestCalculation = (
     loanAmount: number,
     paymentDays: number,

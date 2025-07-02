@@ -178,11 +178,11 @@ const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
               <option value="bimestrales">Bimestrales</option>
             }
             {repaymentPlan !== null &&
-              repaymentPlan >= 6 &&
-              repaymentPlan < 12 && (
-                <>
+              repaymentPlan >= 6 && 
+              repaymentPlan % 2 == 0 &&(
+                
                   <option value="semestrales">Semestrales</option>
-                </>
+                
               )}
             {repaymentPlan !== null && repaymentPlan >= 12 && (
               <>
