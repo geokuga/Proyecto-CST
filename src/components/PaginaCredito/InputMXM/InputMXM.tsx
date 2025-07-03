@@ -18,10 +18,9 @@ const InputMXM: React.FC<InputMXMProps> = ({
   >([4]);
   const [loanTerm, setLoanTerm] = useState<string>("semanales");
   const [repaymentPlan, setRepaymentPlan] = useState<number | null>(4);
-  const [userSelectedRepaymentPlan, setUserSelectedRepaymentPlan] = useState(false);
+  const [userSelectedRepaymentPlan, setUserSelectedRepaymentPlan] =
+    useState(false);
   const [userSelectedLoanTerm, setUserSelectedLoanTerm] = useState(false);
-
-
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -59,51 +58,59 @@ const InputMXM: React.FC<InputMXMProps> = ({
     });
   };
 
-  const handlerepaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  const value = parseFloat(event.target.value);
-  setRepaymentPlan(value);
-  onrepaymentPlan(value);
-  setUserSelectedRepaymentPlan(true);
-};
+  const handlerepaymentPlanChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value = parseFloat(event.target.value);
+    setRepaymentPlan(value);
+    onrepaymentPlan(value);
+    setUserSelectedRepaymentPlan(true);
+  };
 
-const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  const value = event.target.value;
-  setLoanTerm(value);
-  onloanTermChange(value);
-  setUserSelectedLoanTerm(true);
-};
-
+  const handleloanTermChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value = event.target.value;
+    setLoanTerm(value);
+    onloanTermChange(value);
+    setUserSelectedLoanTerm(true);
+  };
 
   useEffect(() => {
-  const inputValue = quantity.replace("$", "").replace(/,/g, "");
-  const quantityCleaned = parseFloat(inputValue);
+    const inputValue = quantity.replace("$", "").replace(/,/g, "");
+    const quantityCleaned = parseFloat(inputValue);
 
-  if (!isNaN(quantityCleaned)) {
-    let repaymentPlans: number[] = [];
+    if (!isNaN(quantityCleaned)) {
+      let repaymentPlans: number[] = [];
 
-    if (loanTerm === "unico") {
-      repaymentPlans = [18];
+      if (loanTerm === "unico") {
+        repaymentPlans = [18];
+      } else {
+        repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
+      }
+
+      setAvailablerepaymentPlan(repaymentPlans);
+
+      if (repaymentPlans.length > 0 && !userSelectedRepaymentPlan) {
+        const firstPlan = repaymentPlans[0];
+        setRepaymentPlan(firstPlan);
+        onrepaymentPlan(firstPlan);
+      }
+
+      if (!userSelectedLoanTerm) {
+        setLoanTerm("semanales");
+        onloanTermChange("semanales");
+      }
     } else {
-      repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
+      setAvailablerepaymentPlan([]);
     }
-
-    setAvailablerepaymentPlan(repaymentPlans);
-
-    if (repaymentPlans.length > 0 && !userSelectedRepaymentPlan) {
-      const firstPlan = repaymentPlans[0];
-      setRepaymentPlan(firstPlan);
-      onrepaymentPlan(firstPlan);
-    }
-
-    if (!userSelectedLoanTerm) {
-      setLoanTerm("semanales");
-      onloanTermChange("semanales");
-    }
-  } else {
-    setAvailablerepaymentPlan([]);
-  }
-}, [quantity, loanTerm, repaymentPlan, userSelectedRepaymentPlan, userSelectedLoanTerm]);
-
+  }, [
+    quantity,
+    loanTerm,
+    repaymentPlan,
+    userSelectedRepaymentPlan,
+    userSelectedLoanTerm,
+  ]);
 
   const getAvailablerepaymentPlan = (quantity: number) => {
     if (quantity >= 500 && quantity < 5000) {
@@ -121,7 +128,7 @@ const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
   return (
     <section className="Scontenedor">
       <section className="SCont">
-        <label className="STitulos">Cantidad a solicitar:</label>
+        <label className="STitulos">Monto del crédito solicitado</label>
 
         <div className="quantity-input">
           <button
@@ -148,7 +155,9 @@ const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
       </section>
       <section className="Rcont">
         <div className="ContSeleccionCredito">
-          <label className="STitulos">Tiempo para cubrir:</label>
+          <label className="STitulos">
+            Plazo total para el pago del crédito
+          </label>
           <select
             id="opciones"
             name="opciones"
@@ -164,7 +173,7 @@ const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
           </select>
         </div>
         <div className="ContSeleccionCredito">
-          <label className="STitulos">Plazos de pagos:</label>
+          <label className="STitulos">Frecuencia de los pagos:</label>
           <select
             id="opciones"
             name="opciones"
@@ -174,15 +183,13 @@ const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
             <option value="semanales">Semanales</option>
             <option value="quincenales">Quincenales</option>
             <option value="mensuales">Mensuales</option>
-            {repaymentPlan !== null && repaymentPlan % 2 == 0 &&
+            {repaymentPlan !== null && repaymentPlan % 2 == 0 && (
               <option value="bimestrales">Bimestrales</option>
-            }
+            )}
             {repaymentPlan !== null &&
-              repaymentPlan >= 6 && 
-              repaymentPlan % 2 == 0 &&(
-                
-                  <option value="semestrales">Semestrales</option>
-                
+              repaymentPlan >= 6 &&
+              repaymentPlan % 2 == 0 && (
+                <option value="semestrales">Semestrales</option>
               )}
             {repaymentPlan !== null && repaymentPlan >= 12 && (
               <>

@@ -20,7 +20,9 @@ const BotonesSeleccion: React.FC<BotonesSeleccionProps> = ({
   return (
     <section className="SeleccionCont">
       <div className="button-selection-container">
-        <label>Selecciona el tipo de crédito que necesitas:</label>
+        <label className="Button-GTitulo">
+          Seleccione el tipo de crédito que desea solicitar
+        </label>
         <section className="button-selection">
           <div className="selection">
             <button

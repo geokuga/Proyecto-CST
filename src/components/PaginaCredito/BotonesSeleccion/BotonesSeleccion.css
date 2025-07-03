@@ -1,6 +1,7 @@
 .SeleccionCont {
   margin-top: 3%;
-  width: 100%;
+  width: 55%;
+  margin-left: 20%;
 }
 
 .button-selection-container {
@@ -12,6 +13,13 @@
   width: auto;
   margin-top: 3%;
   margin-left: 2%;
+  font-family: "PT Serif", serif;
+}
+
+.Button-GTitulo {
+  color: rgb(118, 77, 0);
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .button-selection {
@@ -32,19 +40,20 @@
 }
 
 .button-selection .iconC {
-  font-size: 500%;
+  font-size: 400%;
   color: white;
 }
 
 .selection button {
   border-radius: 50%;
-  margin: 2%;
-  margin-bottom: 0;
-  width: 9rem;
-  height: 9rem;
+  width: 7rem;
+  height: 7rem;
   border: none;
   background-color: rgb(134, 131, 131);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selection button.selected .iconC {
@@ -52,7 +61,7 @@
 }
 
 @media (max-width: 768px) {
-  .selection{
+  .selection {
     margin: 0;
   }
   .button-selection {

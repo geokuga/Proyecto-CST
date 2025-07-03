@@ -34,15 +34,15 @@ const Credito: React.FC = () => {
       </div>
       <section className="body-credito">
         <section className="left">
-            <Seleccion
-              selectedButton={selectedButton}
-              handleButtonClick={handleButtonClick}
-            />
-            <InputMXM
-              onQuantityChange={handleQuantityChange}
-              onloanTermChange={handleloanTermChange}
-              onrepaymentPlan={handlerepaymentPlan}
-            />
+          <Seleccion
+            selectedButton={selectedButton}
+            handleButtonClick={handleButtonClick}
+          />
+          <InputMXM
+            onQuantityChange={handleQuantityChange}
+            onloanTermChange={handleloanTermChange}
+            onrepaymentPlan={handlerepaymentPlan}
+          />
         </section>
         <section className="right">
           <ResultadoCredito

@@ -11,24 +11,22 @@
   flex-direction: row;
 }
 
-.prompts-table{
+.prompts-table {
   display: flex;
   justify-content: center;
-  
 }
 
-.left{
+.left {
   width: 70%;
-  gap: 80px;
   display: flex;
   flex-direction: column;
 }
 
-.left div{
+.left div {
   width: 100%;
 }
 
-.right{
+.right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,15 +40,15 @@
     flex-direction: column;
   }
 
-  .prompts-table{
+  .prompts-table {
     flex-direction: column;
   }
 
-  .left{
+  .left {
     width: 100%;
   }
 
-  .right{
+  .right {
     width: 100%;
     margin-bottom: 20px;
   }
