@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { format } from "date-fns";
@@ -33,6 +33,8 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   const saldoInicial = amount;
   const pagoCapital = amount / numeroPagos;
   const ivaRate = loanType === "personal" ? 0.16 : 0;
+  const hasExported = useRef(false);
+
 
   const fechaInicio = new Date();
   const { fechasPago, diasEntreFechas } = calcularFechasPagos(
@@ -76,12 +78,12 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     doc.setFontSize(8);
     doc.text(
       "Producto contratado: PRESTAMO " +
-        loanType.toUpperCase() +
-        " CON TOPE A " +
-        amount +
-        " CON GARANTIA LIQUIDA MINIMA DEL 10% MAXIMO 20% A UN PLAZO DE " +
-        repaymentPlan +
-        " MESES",
+      loanType.toUpperCase() +
+      " CON TOPE A " +
+      amount +
+      " CON GARANTIA LIQUIDA MINIMA DEL 10% MAXIMO 20% A UN PLAZO DE " +
+      repaymentPlan +
+      " MESES",
       10,
       10
     );
@@ -93,12 +95,12 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     doc.text("Fecha de entrega: " + format(fechaInicio, "dd/MM/yyyy"), 60, 18);
     doc.text(
       "Fecha de vencimiento: " +
-        format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
+      format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
       110,
       18
     );
     doc.text(
-      `Tasa de interés: ${(interestRate * 120).toFixed(2)}% (anual)`,
+      `Tasa de interés: ${(interestRate * 100).toFixed(2)}% (anual)`,
       10,
       24
     );
@@ -125,7 +127,6 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       theme: "grid",
       headStyles: { fillColor: [184, 184, 184] },
     });
-
     const y = doc.lastAutoTable.finalY + 6;
     doc.setDrawColor(184, 184, 184);
 
@@ -154,8 +155,11 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   };
 
   useEffect(() => {
+  if (!hasExported.current) {
     exportarPDF();
-  }, []);
+    hasExported.current = true;
+  }
+}, []);
 
   return null;
 };

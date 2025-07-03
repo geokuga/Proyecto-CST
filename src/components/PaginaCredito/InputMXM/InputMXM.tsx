@@ -15,9 +15,13 @@ const InputMXM: React.FC<InputMXMProps> = ({
   const [quantity, setQuantity] = useState<string>("");
   const [availablerepaymentPlan, setAvailablerepaymentPlan] = useState<
     number[]
-  >([]);
-  const [loanTerm, setLoanTerm] = useState<string>("");
-  const [repaymentPlan, setRepaymentPlan] = useState<number | null>(null);
+  >([4]);
+  const [loanTerm, setLoanTerm] = useState<string>("semanales");
+  const [repaymentPlan, setRepaymentPlan] = useState<number | null>(4);
+  const [userSelectedRepaymentPlan, setUserSelectedRepaymentPlan] = useState(false);
+  const [userSelectedLoanTerm, setUserSelectedLoanTerm] = useState(false);
+
+
 
   useEffect(() => {
     onQuantityChange(quantity);
@@ -28,7 +32,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
     if (inputValue === "" || isNaN(Number(inputValue))) {
       setQuantity("");
     } else {
-      const numericValue = Math.min(parseFloat(inputValue), 700000);
+      const numericValue = Math.min(parseFloat(inputValue), 500000);
       setQuantity(`$${numericValue.toLocaleString("en-US")}`);
     }
   };
@@ -49,45 +53,61 @@ const InputMXM: React.FC<InputMXMProps> = ({
         prevQuantity === ""
           ? 0
           : parseFloat(prevQuantity.replace("$", "").replace(/,/g, ""));
-      return `$${Math.min(numericValue + 1000, 700000).toLocaleString(
+      return `$${Math.min(numericValue + 1000, 500000).toLocaleString(
         "en-US"
       )}`;
     });
   };
 
-  const handleloanTermChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    onloanTermChange(event.target.value);
-    setLoanTerm(event.target.value);
-  };
-  const handlerepaymentPlanChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const value = parseFloat(event.target.value);
-    setRepaymentPlan(value);
-    onrepaymentPlan(value);
-  };
+  const handlerepaymentPlanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const value = parseFloat(event.target.value);
+  setRepaymentPlan(value);
+  onrepaymentPlan(value);
+  setUserSelectedRepaymentPlan(true);
+};
+
+const handleloanTermChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const value = event.target.value;
+  setLoanTerm(value);
+  onloanTermChange(value);
+  setUserSelectedLoanTerm(true);
+};
+
 
   useEffect(() => {
-    const inputValue = quantity.replace("$", "").replace(/,/g, "");
-    const quantityCleaned = parseFloat(inputValue);
-    if (!isNaN(quantityCleaned)) {
-      if (loanTerm === "unico") {
-        const repaymentPlans = [18];
-        setAvailablerepaymentPlan(repaymentPlans);
-      } else {
-        const repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
-        setAvailablerepaymentPlan(repaymentPlans);
-      }
+  const inputValue = quantity.replace("$", "").replace(/,/g, "");
+  const quantityCleaned = parseFloat(inputValue);
+
+  if (!isNaN(quantityCleaned)) {
+    let repaymentPlans: number[] = [];
+
+    if (loanTerm === "unico") {
+      repaymentPlans = [18];
     } else {
-      setAvailablerepaymentPlan([]);
+      repaymentPlans = getAvailablerepaymentPlan(quantityCleaned);
     }
-  }, [quantity, loanTerm]);
+
+    setAvailablerepaymentPlan(repaymentPlans);
+
+    if (repaymentPlans.length > 0 && !userSelectedRepaymentPlan) {
+      const firstPlan = repaymentPlans[0];
+      setRepaymentPlan(firstPlan);
+      onrepaymentPlan(firstPlan);
+    }
+
+    if (!userSelectedLoanTerm) {
+      setLoanTerm("semanales");
+      onloanTermChange("semanales");
+    }
+  } else {
+    setAvailablerepaymentPlan([]);
+  }
+}, [quantity, loanTerm, repaymentPlan, userSelectedRepaymentPlan, userSelectedLoanTerm]);
+
 
   const getAvailablerepaymentPlan = (quantity: number) => {
     if (quantity >= 500 && quantity < 5000) {
-      return [4, 6, 8, 12];
+      return [3, 6, 9, 12];
     } else if (quantity >= 5000 && quantity < 20000) {
       return [6, 12, 18, 24];
     } else if (quantity >= 20000 && quantity < 50000) {
@@ -126,12 +146,14 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </button>
         </div>
       </section>
+      <section className="Rcont">
         <div className="ContSeleccionCredito">
           <label className="STitulos">Tiempo para cubrir:</label>
           <select
             id="opciones"
             name="opciones"
             className="input-Select"
+            value={repaymentPlan?.toString()}
             onChange={handlerepaymentPlanChange}
           >
             {availablerepaymentPlan.map((loanTerm) => (
@@ -152,13 +174,15 @@ const InputMXM: React.FC<InputMXMProps> = ({
             <option value="semanales">Semanales</option>
             <option value="quincenales">Quincenales</option>
             <option value="mensuales">Mensuales</option>
-            <option value="bimestrales">Bimestrales</option>
+            {repaymentPlan !== null && repaymentPlan % 2 == 0 &&
+              <option value="bimestrales">Bimestrales</option>
+            }
             {repaymentPlan !== null &&
-              repaymentPlan >= 6 &&
-              repaymentPlan < 12 && (
-                <>
+              repaymentPlan >= 6 && 
+              repaymentPlan % 2 == 0 &&(
+                
                   <option value="semestrales">Semestrales</option>
-                </>
+                
               )}
             {repaymentPlan !== null && repaymentPlan >= 12 && (
               <>
@@ -168,6 +192,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
             )}
           </select>
         </div>
+      </section>
     </section>
   );
 };
