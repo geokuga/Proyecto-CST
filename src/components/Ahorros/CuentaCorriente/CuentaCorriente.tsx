@@ -26,7 +26,7 @@ export default function CuentaCorriente() {
           <div className="contenido-ahorro">
             <span className="Descripcion-tipo-ahorro">
               Cuenta accesible que se abre con solo $50.00. Permite depósitos y
-              retiros diarios, y genera interés anual del 2.596%, abonado
+              retiros diarios, y genera interés anual del 2.5%, abonado
               mensualmente.
             </span>
           </div>
@@ -38,7 +38,7 @@ export default function CuentaCorriente() {
           </div>
           <div className="contenido-ahorro">
             <Item text="Apertura desde $50.00" />
-            <Item text="Interés del 2.596% anual" />
+            <Item text="Interés del 2.5% anual" />
             <Item text="Retiros y depósitos diarios" />
             <Item text="Intereses abonados cada mes" />
             <Item text="Sin costo de mantenimiento" />

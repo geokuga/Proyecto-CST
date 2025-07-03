@@ -1,3 +1,4 @@
+// App.tsx
 import "./App.css";
 import Navbar from "./components/PaginaHome/navbar/Navbar";
 import HeaderHome from "./components/PaginaHome/HeaderHome/HeaderHome";
@@ -19,12 +20,14 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 function MainContent() {
   const location = useLocation();
 
   return (
     <div className="fondo">
+      <ScrollToTop />
       {location.pathname !== "/credito" && <Navbar />}
       <Routes>
         <Route
