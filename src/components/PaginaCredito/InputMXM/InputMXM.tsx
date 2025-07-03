@@ -173,7 +173,7 @@ const InputMXM: React.FC<InputMXMProps> = ({
           </select>
         </div>
         <div className="ContSeleccionCredito">
-          <label className="STitulos">Frecuencia de los pagos:</label>
+          <label className="STitulos">Frecuencia de los pagos</label>
           <select
             id="opciones"
             name="opciones"

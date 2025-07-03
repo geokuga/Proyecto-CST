@@ -1,5 +1,5 @@
 import "./ResultadoCredito.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TablaAmortizacion from "./TablaAmortizacion";
 import {
   numberOfPayments,
@@ -31,8 +31,9 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   // Valor por defecto para el monto
   const sanitizedAmount = amount?.replace("$", "").replace(/,/g, "") || "0";
   const loanAmount = parseFloat(sanitizedAmount);
-  const interestRate = tipoCredito === "personal" || tipoCredito === "comercial" ? 0.216 : 0.18;
- 
+  const interestRate =
+    tipoCredito === "personal" || tipoCredito === "comercial" ? 0.216 : 0.18;
+
   // Calcular pagos totales
   const totalPayments = numberOfPayments(term, plan);
   const pagoPorPeriodo = totalPayments > 0 ? loanAmount / totalPayments : 0;
@@ -120,10 +121,14 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
         </section>
       </section>
       <section className="last-row">
-        <button onClick={() => {
-          setShowTable(false);
-          setTimeout(() => setShowTable(true), 50);
-        }}>Más información</button>
+        <button
+          onClick={() => {
+            setShowTable(false);
+            setTimeout(() => setShowTable(true), 50);
+          }}
+        >
+          Descargar simulación de crédito
+        </button>
       </section>
       {showTable && (
         <TablaAmortizacion
@@ -134,8 +139,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
           repaymentPlan={plan}
           pagosTotales={totalPayments}
         />
-      )
-      }
+      )}
     </main>
   );
 };

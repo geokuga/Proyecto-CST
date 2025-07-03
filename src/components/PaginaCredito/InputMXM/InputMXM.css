@@ -66,7 +66,7 @@
   border: 1px solid white;
   height: 3rem;
   outline: none;
-  width: 153.281px;
+  width: 35%;
 }
 
 #numerico::-webkit-inner-spin-button,
@@ -80,7 +80,7 @@
   padding: 0.5rem;
   text-align: center;
   border: 1px solid white;
-  width: 22%;
+  width: 28%;
   outline: none;
   height: 3rem;
 }
