@@ -12,17 +12,21 @@
 .button-selection-container label {
   width: auto;
   margin-top: 3%;
-  margin-left: 17%;
   font-family: "PT Serif", serif;
 }
 
 .Button-GTitulo {
   color: rgb(118, 77, 0);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-left: 16%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button-selection {
+  margin-top: 3%;
   display: flex;
   flex-direction: initial;
 }

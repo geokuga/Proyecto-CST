@@ -35,7 +35,6 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
   const ivaRate = loanType === "personal" ? 0.16 : 0;
   const hasExported = useRef(false);
 
-
   const fechaInicio = new Date();
   const { fechasPago, diasEntreFechas } = calcularFechasPagos(
     fechaInicio,
@@ -78,12 +77,12 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     doc.setFontSize(8);
     doc.text(
       "Producto contratado: PRESTAMO " +
-      loanType.toUpperCase() +
-      " CON TOPE A " +
-      amount +
-      " CON GARANTIA LIQUIDA MINIMA DEL 10% MAXIMO 20% A UN PLAZO DE " +
-      repaymentPlan +
-      " MESES",
+        loanType.toUpperCase() +
+        " CON TOPE A " +
+        amount +
+        " CON GARANTIA LIQUIDA MINIMA DEL 10% MAXIMO 20% A UN PLAZO DE " +
+        repaymentPlan +
+        " MESES",
       10,
       10
     );
@@ -95,7 +94,7 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
     doc.text("Fecha de entrega: " + format(fechaInicio, "dd/MM/yyyy"), 60, 18);
     doc.text(
       "Fecha de vencimiento: " +
-      format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
+        format(fechasPago[fechasPago.length - 1], "dd/MM/yyyy"),
       110,
       18
     );
@@ -151,15 +150,16 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       x += rectWidth;
     }
 
-    doc.save("amortizacion.pdf");
+    /**doc.save("amortizacion.pdf");**/
+    doc.output("dataurlnewwindow");
   };
 
   useEffect(() => {
-  if (!hasExported.current) {
-    exportarPDF();
-    hasExported.current = true;
-  }
-}, []);
+    if (!hasExported.current) {
+      exportarPDF();
+      hasExported.current = true;
+    }
+  }, []);
 
   return null;
 };
