@@ -9,38 +9,36 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Fila principal */
+/* Fila principal de resultados */
 .first-row {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
-/* Títulos */
-.titulos {
-  flex: 1;
+/* Cada fila con título + valor */
+.filaResultado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* Títulos */
 .subtitulos-Resultado {
   font-size: 1rem;
   font-weight: 600;
   color: #34495e;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
-/* Resultados */
-.resultados {
-  flex: 1;
-  min-width: 180px;
-  text-align: right;
-}
-
-.resultados p {
+/* Valores */
+.valorResultado {
   font-size: 1.1rem;
   color: #27ae60;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin: 0;
+  text-align: right;
 }
 
 /* Botón */
@@ -61,4 +59,22 @@ button {
 
 button:hover {
   background-color: #2980b9;
+}
+
+/* Responsividad para móvil */
+@media (max-width: 820px) {
+  .ContRCredito {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .filaResultado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .valorResultado {
+    text-align: left;
+    width: 100%;
+  }
 }

@@ -24,21 +24,16 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
 
   const plan = repaymentPlan;
   const term = loanTerm;
-
-  // Valor por defecto para tipo de crédito
   const tipoCredito = loanType || "personal";
 
-  // Valor por defecto para el monto
   const sanitizedAmount = amount?.replace("$", "").replace(/,/g, "") || "0";
   const loanAmount = parseFloat(sanitizedAmount);
   const interestRate =
     tipoCredito === "personal" || tipoCredito === "comercial" ? 0.216 : 0.18;
 
-  // Calcular pagos totales
   const totalPayments = numberOfPayments(term, plan);
   const pagoPorPeriodo = totalPayments > 0 ? loanAmount / totalPayments : 0;
 
-  /***** CALCULO DE INTERESES EXACTO *****/
   const start = new Date();
   const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
 
@@ -54,6 +49,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
     }
     return total;
   };
+
   const intereses = totalIntereses(diasEntreFechas, pagoPorPeriodo, loanAmount);
 
   const totalIva = (
@@ -83,43 +79,35 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   return (
     <main className="ContRCredito">
       <section className="first-row">
-        <section className="titulos">
+        <div className="filaResultado">
           <p className="subtitulos-Resultado">Total intereses</p>
+          <p className="valorResultado">
+            ${intereses.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+        </div>
+        <div className="filaResultado">
           <p className="subtitulos-Resultado">IVA</p>
+          <p className="valorResultado">
+            ${IVA.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+        </div>
+        <div className="filaResultado">
           <p className="subtitulos-Resultado">Pago por periodo ({term})</p>
-          <p className="subtitulos-Resultado">Total a pagar</p>
-        </section>
-        <section className="resultados">
-          <p>
-            $
-            {intereses.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </p>
-          <p>
-            $
-            {IVA.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </p>
-          <p>
+          <p className="valorResultado">
             $
             {pagoPorPeriodo.toLocaleString("en-US", {
               minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
             })}
           </p>
-          <p>
-            $
-            {TOTAL.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
+        </div>
+        <div className="filaResultado">
+          <p className="subtitulos-Resultado">Total a pagar</p>
+          <p className="valorResultado">
+            ${TOTAL.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
-        </section>
+        </div>
       </section>
+
       <section className="last-row">
         <button
           onClick={() => {
@@ -130,6 +118,7 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
           Descargar simulación de crédito
         </button>
       </section>
+
       {showTable && (
         <TablaAmortizacion
           loanType={tipoCredito}
