@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 interface ItemProps {
   text: string;
 }
+
 const Item: React.FC<ItemProps> = ({ text }) => {
   return (
-    <p>
-      <i className="fa fa-check-circle-o" aria-hidden="true"></i> &nbsp;{text}
+    <p className="item-text">
+      <i className="fa fa-check-circle-o" aria-hidden="true"></i>
+      <span>{text}</span>
     </p>
   );
 };
@@ -20,8 +22,8 @@ export default function Requisitos() {
           <h3>Requisitos para ser socio</h3>
         </div>
         <div className="TextoContent TituloContentSM">
-          <Item text="Comprobante de domicilio" />
-          <Item text="Identificación Oficial" />
+          <Item text="Comprobante de domicilio reciente" />
+          <Item text="Identificación Oficial vigente" />
           <Item text="Cubrir parte social ($960)" />
         </div>
         <div className="TituloContentSM TituloContent">
@@ -30,9 +32,8 @@ export default function Requisitos() {
         <div className="TextoContentSM TextoContent">
           <Item text="Acta de nacimiento" />
           <Item text="CURP" />
-          <Item text="Comprobante de domicilio" />
+          <Item text="Comprobante de domicilio reciente" />
           <Item text="Identificación oficial del tutor" />
-          <Item text="Cubrir parte social ($960)" />
         </div>
       </section>
 
@@ -54,7 +55,7 @@ export default function Requisitos() {
           <Item text="Identificación oficial" />
           <Item text="Comprobante de domicilio" />
           <Item text="Comprobante de ingresos" />
-          <Item text="Tener un ahorro del 10%" />
+          <Item text="Tener un ahorro del 10% al 20%" />
           <center>
             <Link to="/credito">
               <button className="RBton">Simular crédito</button>

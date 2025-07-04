@@ -37,12 +37,7 @@
   place-items: center;
   border-radius: 20px 20px 0px 0px;
   width: 100%;
-  background: rgb(29, 113, 184);
-  background: linear-gradient(
-    90deg,
-    rgba(29, 113, 184, 1) 0%,
-    rgba(50, 163, 221, 1) 100%
-  );
+  background: linear-gradient(90deg, #1d71b8 0%, #32a3dd 100%);
 }
 
 .TituloContent h3 {
@@ -60,17 +55,27 @@
   background-color: #f9b234;
 }
 
-.TextoContent p {
-  position: relative;
-  text-align: start;
+/* NUEVO: Estilo alineado correctamente */
+.item-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   color: black;
   font-size: small;
   margin: 2%;
   margin-left: 18%;
+  text-align: left;
 }
 
-.fa-check-circle-o {
+.item-text i {
   color: red;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.item-text span {
+  display: inline-block;
+  max-width: 100%;
 }
 
 .TituloContentSM {
