@@ -39,7 +39,7 @@
   width: 30%;
   height: 100%;
   background-color: gray;
-  background: url("../../../../public/img/FondoEcoConsumo.jpg");
+  background: url("/img/FondoEcoConsumo.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 0 10px 10px 0;

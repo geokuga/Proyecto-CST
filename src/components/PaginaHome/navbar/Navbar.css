@@ -126,7 +126,7 @@ header {
   }
 
   .nav-link.active {
-    top: 15%;
+    top: 13%;
     transition: all 0.7s ease-in;
   }
 }
