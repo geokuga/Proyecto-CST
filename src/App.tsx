@@ -15,7 +15,7 @@ import OtrosBeneficios from "./components/OtrosBeneficios/OtrosBeneficios";
 import Ahorros from "./components/Ahorros/Ahorros";
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   useLocation,
