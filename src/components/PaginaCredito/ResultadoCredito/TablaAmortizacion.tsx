@@ -150,8 +150,13 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       x += rectWidth;
     }
 
-    /**doc.save("amortizacion.pdf");**/
-    doc.output("dataurlnewwindow");
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      doc.save("amortizacion.pdf"); // descarga directa en móviles
+    } else {
+      doc.output("dataurlnewwindow"); // vista previa en nueva pestaña en escritorio
+    }
   };
 
   useEffect(() => {
