@@ -150,6 +150,14 @@ const TablaAmortizacion: React.FC<TablaAmortizacionProps> = ({
       x += rectWidth;
     }
 
+    const t =
+      "Este simulador tiene fines exclusivamente informativos sin validez oficial. ";
+    doc.text(
+      t,
+      (doc.internal.pageSize.getWidth() - doc.getTextWidth(t)) / 2,
+      doc.internal.pageSize.getHeight() - 10
+    );
+
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
