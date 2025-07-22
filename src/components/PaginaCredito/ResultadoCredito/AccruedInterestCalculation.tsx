@@ -9,10 +9,14 @@ import {
 } from "date-fns";
 
 export const numberOfPayments = (loanTerm: string, plan: number): number => {
+   if (!plan || isNaN(plan) || plan <= 0) return 1; // valor por defecto
+  let start = new Date();
+  let end = addMonths(start, plan);
+  let days = differenceInCalendarDays(end, start);
   let numberOfPayments = 1;
   switch (loanTerm) {
     case "semanales":
-      numberOfPayments = 4 * plan; //depende de plazo
+      numberOfPayments = Math.floor(days / 7);//Math.floor(4.33 * plan); //depende de plazo
       break;
     case "quincenales":
       numberOfPayments = 2 * plan;
@@ -104,45 +108,47 @@ export const calcularFechasPagos = (
   let fecha = inicio;
 
   for (let i = 0; i < numeroPagos; i++) {
+    let fechaTmp = new Date(fecha); 
     switch (loanTerm) {
       case "semanales":
-        fecha = addWeeks(fecha, 1);
+        fechaTmp = addWeeks(fecha, 1);
         break;
       case "quincenales":
-        fecha = addWeeks(fecha, 2);
+        fechaTmp = addDays(fecha, 15);
         break;
       case "mensuales":
-        fecha = addDays(fecha, 30);
+        fechaTmp = addDays(fecha, 30);
         break;
       case "bimestrales":
-        fecha = addMonths(fecha, 2);
+        fechaTmp = addMonths(fecha, 2);
         break;
       case "semestrales":
-        fecha = addMonths(fecha, 6);
+        fechaTmp = addMonths(fecha, 6);
         break;
       case "anual":
-        fecha = addYears(fecha, 1);
+        fechaTmp = addYears(fecha, 1);
         break;
       case "unico":
-        fecha = addMonths(fecha, 18);
+        fechaTmp = addMonths(fecha, 18);
         break;
       default:
         break;
     }
-    if (isSaturday(fecha)) {
-      fecha = addDays(fecha, 2);
-    } else if (isSunday(fecha)) {
-      fecha = addDays(fecha, 1);
+    if (isSaturday(fechaTmp)) {
+      fechaTmp = addDays(fechaTmp, 2);
+    } else if (isSunday(fechaTmp)) {
+      fechaTmp = addDays(fechaTmp, 1);
     }
 
-    fechasPago.push(fecha);
+    fechasPago.push(fechaTmp);
 
     if (i === 0) {
-      diasEntreFechas.push(differenceInCalendarDays(fecha, inicio));
+      diasEntreFechas.push(differenceInCalendarDays(fechaTmp, inicio));
     } else {
       const anterior = fechasPago[i - 1];
-      diasEntreFechas.push(differenceInCalendarDays(fecha, anterior));
+      diasEntreFechas.push(differenceInCalendarDays(fechaTmp, anterior));
     }
+    fecha = fechaTmp;
   }
   return { fechasPago, diasEntreFechas };
 };

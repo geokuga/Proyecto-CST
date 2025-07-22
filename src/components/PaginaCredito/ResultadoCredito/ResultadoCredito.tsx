@@ -37,6 +37,10 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   const start = new Date();
   const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
 
+console.log("Total pagos:", totalPayments);
+console.log("Días entre fechas:", diasEntreFechas);
+
+  
   const totalIntereses = (
     paymentDays: number[],
     pagoPorPeriodo: number,
