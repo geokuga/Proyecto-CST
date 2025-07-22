@@ -31,15 +31,19 @@
 .button-selection {
   margin-top: 3%;
   display: flex;
-  flex-direction: initial;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
 }
 
 .selection {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 3%;
   align-items: center;
+  width: 8rem; /* fijo para evitar wrap */
 }
 
 .selection label {
@@ -67,18 +71,24 @@
   color: orange;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .SeleccionCont {
     width: 100%;
     margin-left: 0;
     margin-bottom: 15%;
   }
 
+  .button-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+  }
+
   .selection {
     margin: 0;
-  }
-  .button-selection {
-    flex-direction: column;
+    width: 100%; /* expandir para ocupar columna */
   }
 
   .Button-GTitulo {
@@ -88,5 +98,20 @@
     width: 100%;
     text-align: center;
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 969px) {
+  .button-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .selection {
+    width: 8rem;
   }
 }
