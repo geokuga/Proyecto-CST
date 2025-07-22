@@ -26,12 +26,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://wa.me/523841090455" target="_blank">
                   <i className="fa fa-whatsapp" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="mailto:captacion@cajasolidariatala.com">
                   <i className="fa fa-envelope" aria-hidden="true"></i>
                 </a>
               </li>
@@ -68,8 +68,8 @@ export default function Footer() {
               <span>
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </span>
-              <a href="mailto:unecajasolidariatala@hotmail.com">
-                cajasolidariatala@hotmail.com
+              <a href="mailto:captacion@cajasolidariatala.com">
+                captacion@cajasolidariatala.com
               </a>
             </li>
             <li>
