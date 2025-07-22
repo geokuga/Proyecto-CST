@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+  const iconRef = useRef<HTMLDivElement | null>(null);
+
   const toggleMenu = () => setOpen(!isOpen);
 
   const location = useLocation();
@@ -19,24 +22,44 @@ const Navbar = () => {
     { path: "/otrosBeneficios", name: "Otros beneficios" },
   ];
 
-  // Filtramos la ruta actual
   const linksToShow = routes.filter((route) => route.path !== currentPath);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        navRef.current &&
+        !navRef.current.contains(target) &&
+        iconRef.current &&
+        !iconRef.current.contains(target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="headerNavbar">
       <div className="container">
-        <nav>
+        <nav ref={navRef}>
           <div className="logo">
             <img src="logos/LogoCajaSolidaria.png" alt="Logo" />
           </div>
           <ul className={isOpen ? "nav-link active" : "nav-link"}>
             {linksToShow.map((route) => (
               <li key={route.path}>
-                <Link to={route.path}>{route.name}</Link>
+                <Link to={route.path} onClick={() => setOpen(false)}>
+                  {route.name}
+                </Link>
               </li>
             ))}
           </ul>
-          <div className="icon" onClick={toggleMenu}>
+          <div className="icon" onClick={toggleMenu} ref={iconRef}>
             <FaBars />
           </div>
         </nav>
