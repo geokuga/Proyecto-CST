@@ -67,6 +67,10 @@
   align-items: center;
 }
 
+.selection button:hover {
+  background-color: #2980b9;
+}
+
 .selection button.selected .iconC {
   color: orange;
 }

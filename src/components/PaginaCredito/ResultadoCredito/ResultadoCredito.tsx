@@ -37,10 +37,9 @@ const ResultadoCredito: React.FC<ResultadoCreditoProps> = ({
   const start = new Date();
   const { diasEntreFechas } = calcularFechasPagos(start, totalPayments, term);
 
-console.log("Total pagos:", totalPayments);
-console.log("Días entre fechas:", diasEntreFechas);
+  console.log("Total pagos:", totalPayments);
+  console.log("Días entre fechas:", diasEntreFechas);
 
-  
   const totalIntereses = (
     paymentDays: number[],
     pagoPorPeriodo: number,
@@ -114,6 +113,7 @@ console.log("Días entre fechas:", diasEntreFechas);
 
       <section className="last-row">
         <button
+          className="btnDescargar"
           onClick={() => {
             setShowTable(false);
             setTimeout(() => setShowTable(true), 50);

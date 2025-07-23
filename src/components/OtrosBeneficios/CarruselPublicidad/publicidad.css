@@ -27,6 +27,8 @@
   scroll-snap-align: start;
   object-fit: contain;
   flex: 0 0 33%;
+  width: 100%; /* ✅ para Safari */
+  height: auto; /* ✅ para Safari */
 }
 
 .slider-nav {
@@ -39,7 +41,6 @@
   z-index: 1;
 }
 
-/* Estilos nuevos para los botones del nav */
 .nav-dot {
   width: 0.5rem;
   height: 0.5rem;
@@ -65,12 +66,10 @@
 @media (max-width: 768px) {
   .Slider-wrapper {
     width: 100%;
-    left: 0.5%;
   }
 
   .slider {
-    box-shadow: none;
-    aspect-ratio: 6/5;
+    aspect-ratio: 6 / 5;
   }
 
   .slider img {

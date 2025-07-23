@@ -46,7 +46,7 @@
   text-align: center;
 }
 
-button {
+.btnDescargar {
   background-color: #3498db;
   color: #fff;
   border: none;
@@ -57,7 +57,7 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+.btnDescargar:hover {
   background-color: #2980b9;
 }
 

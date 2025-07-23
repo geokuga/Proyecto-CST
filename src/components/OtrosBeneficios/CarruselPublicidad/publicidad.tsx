@@ -16,7 +16,7 @@ export default function Publicidad({ start, end }: PublicidadProps) {
 
   const imageList = Array.from(
     { length: end - start + 1 },
-    (_, i) => `img/publicidad${start + i}.jpg`
+    (_, i) => `img/publicidad${start + i}.jpg` // ✅ interpolación correcta
   );
 
   const scrollToSlide = (
@@ -65,7 +65,7 @@ export default function Publicidad({ start, end }: PublicidadProps) {
     scrollToSlide(index);
 
     timeoutRef.current = setTimeout(() => {
-      startAutoScroll(); // Resume auto scroll after 15 seconds
+      startAutoScroll();
     }, 15000);
   };
 
