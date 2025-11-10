@@ -13,6 +13,7 @@ import Promociones from "./components/Promociones/Promociones";
 import Water from "./components/Water/Water";
 import OtrosBeneficios from "./components/OtrosBeneficios/OtrosBeneficios";
 import Ahorros from "./components/Ahorros/Ahorros";
+import Avisos from "./components/Avisos/Avisos";
 
 import {
   HashRouter as Router,
@@ -64,6 +65,7 @@ function MainContent() {
         <Route path="/water" element={<Water />} />
         <Route path="/otrosBeneficios" element={<OtrosBeneficios />} />
         <Route path="/credito" element={<Credito />} />
+        <Route path="/avisos" element={<Avisos />} />
       </Routes>
     </div>
   );

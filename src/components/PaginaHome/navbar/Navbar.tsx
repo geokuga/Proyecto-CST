@@ -20,6 +20,7 @@ const Navbar = () => {
     { path: "/water", name: "Proyecto water" },
     { path: "/credito", name: "Crédito" },
     { path: "/otrosBeneficios", name: "Otros beneficios" },
+    { path: "/avisos", name: "Avisos" },
   ];
 
   const linksToShow = routes.filter((route) => route.path !== currentPath);
