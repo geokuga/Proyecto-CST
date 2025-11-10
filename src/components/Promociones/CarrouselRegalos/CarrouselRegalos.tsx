@@ -38,7 +38,10 @@ export default function Carrusel({ imageList }: CarruselProps) {
     <div className="carrousel-regalos">
       <div className="Regalos-Texto-Slider">
         <h2>¡No te pierdas nuestras promociones!</h2>
-        <p>Asiste a sucursal para conocer los regalos que tenemos para ti.</p>
+        <p>
+          Asiste a nuestra sucursal para conocer los regalos que tenemos para
+          ti.
+        </p>
       </div>
 
       <div className="Contenedor-Slider-Regalos">

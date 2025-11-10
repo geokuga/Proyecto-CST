@@ -71,7 +71,7 @@ export default function Requisitos() {
         <div className="TextoContent">
           <Item text="Cuenta corriente" />
           <Item text="Ahorro juvenil" />
-          <Item text="Ahorro promoción" />
+          <Item text="Cuenta promoción" />
           <Item text="Inversiones a plazo fijo" />
         </div>
       </section>

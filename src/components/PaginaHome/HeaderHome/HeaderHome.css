@@ -26,11 +26,13 @@
 
 .HContent p {
   font-family: "Georgia", serif;
-  position: absolute;
+  position: relative;
   font-size: 160%;
-  margin-left: 20%;
+  margin-left: 50%;
   transform: skew(-15deg);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* <-- evita salto de línea */
+  white-space: nowrap; /* <-- evita que el texto dentro se parta en varias líneas */
 }
 
 .HeaderBton {
@@ -109,6 +111,7 @@
   .HContent p {
     left: 17%;
     font-size: 120%;
+    margin-left: 5%;
   }
 
   .HeaderBton,
