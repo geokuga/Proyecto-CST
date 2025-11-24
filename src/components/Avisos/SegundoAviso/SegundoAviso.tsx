@@ -1,7 +1,7 @@
 import "./SegundoAviso.css";
 
 export default function SegundoAviso({
-  imagenes = ["dist/img/Aviso1.png"],
+  imagenes = ["img/Aviso1.png"],
 }: {
   imagenes?: string[];
 }) {

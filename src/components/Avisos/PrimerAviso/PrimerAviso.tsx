@@ -7,11 +7,7 @@ export default function PrimerAviso() {
         {/* Mascota (flip seguro) */}
         <div className="mascotaWrap" aria-hidden>
           <div className="mascotaFlip">
-            <img
-              src="dist/logos/caña.png"
-              alt="Mascota"
-              className="mascotaImg"
-            />
+            <img src="logos/caña.png" alt="Mascota" className="mascotaImg" />
           </div>
         </div>
 
@@ -19,16 +15,15 @@ export default function PrimerAviso() {
         <div className="tarjetaWrap">
           <div className="tarjeta">
             <img
-              src="dist/img/Aviso1.png"
+              src="img/Aviso1.png"
               alt="Aviso importante"
               className="tarjetaImg"
             />
 
             <div className="tarjetaText">
-              <h2>¡Aviso importante!</h2>
               <p>
-                Apreciable socio, Caja Solidaria Tala informa cambios en sus
-                horarios.
+                Si tienes dudas sobre nuestros servicios o atención, acude a tu
+                sucursal más cercana o contáctanos por WhatsApp.
               </p>
             </div>
           </div>
