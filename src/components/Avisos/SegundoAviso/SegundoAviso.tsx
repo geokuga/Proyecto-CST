@@ -1,18 +1,28 @@
 import "./SegundoAviso.css";
 
 export default function SegundoAviso({
-  imagenes = ["img/Aviso1.png"],
+  imagenes = [],
+  imagenPrimerAviso,
+  onSelect,
 }: {
   imagenes?: string[];
+  imagenPrimerAviso: string;
+  onSelect?: (img: string) => void;
 }) {
   const maxSlots = 4;
-  const placeholdersCount = maxSlots - imagenes.length;
+
+  // Filtrar imágenes distintas a la principal
+  const imagenesFiltradas = imagenes.filter(
+    (img) => img && img.trim() !== "" && img !== imagenPrimerAviso
+  );
+
+  const placeholdersCount = maxSlots - imagenesFiltradas.length;
 
   return (
     <div className="segundoAvisoWrapper">
       <div className="imagenesGrid">
-        {imagenes.map((img, i) => (
-          <div key={i} className="imagenItem">
+        {imagenesFiltradas.map((img, i) => (
+          <div key={i} className="imagenItem" onClick={() => onSelect?.(img)}>
             <img src={img} alt={`Imagen ${i + 1}`} />
           </div>
         ))}

@@ -17,7 +17,7 @@ export default function EnlaceIcons() {
 
       <section className="enlace-icons-section">
         <Link to="/water">
-          <div className="enlace-icons icon-water">
+          <div className="enlace-icons icon-water-home">
             <FontAwesomeIcon icon={faDroplet} />
           </div>
           <h1>Proyecto Water</h1>

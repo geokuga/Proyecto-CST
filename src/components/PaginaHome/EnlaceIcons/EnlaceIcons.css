@@ -23,18 +23,23 @@
 .enlace-icons {
   color: #e67e22;
   font-size: 1100%;
+  display: flex;
+  justify-content: center;
 }
 
-.icon-water {
+.icon-water-home {
   color: #3498db;
+  margin-bottom: 20%;
 }
 
 .icon-gift {
   color: #e74c3c;
+  margin-bottom: 20%;
 }
 
 .icon-shop {
   color: #2ecc71;
+  margin-bottom: 20%;
 }
 
 .enlace-icons-section h1 {
